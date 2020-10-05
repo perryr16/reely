@@ -8,10 +8,38 @@ class TmdbService
     json[:results][0][:id]
   end
 
-  def get_movies_by_actor_id(id)
-    res = conn.get('/3/person/287')
-    binding.pry
+  def get_credits_by_actor_id(id)
+    response = conn.get("/3/person/#{id}/movie_credits")
+    JSON.parse(response.body, symbolize_names: true)
   end
+
+  def get_best_by_actor_id(id)
+    response = conn.get("/3/discover/movie") do |res|
+      res.params[:sort_by] = 'vote_average.desc'
+      res.params[:with_cast] = id
+    end
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def get_worst_by_actor_id(id)
+    response = conn.get("/3/discover/movie") do |res|
+      res.params[:sort_by] = 'vote_average.asc'
+      res.params["vote_count.gte"] = 10
+      res.params[:with_cast] = id
+    end
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def get_best_by_actor(actor)
+    id = get_actor_id(actor)
+    get_best_by_actor_id(id)
+  end
+
+  def get_worst_by_actor(actor)
+    id = get_actor_id(actor)
+    get_worst_by_actor_id(id)
+  end
+
    
   def conn 
     Faraday.new('http://api.themoviedb.org') do |res|

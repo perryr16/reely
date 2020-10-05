@@ -11,13 +11,23 @@ describe 'hit the movie database api' do
     expect(brad_id).to eq(287)
   end
 
-  xit 'returns movies by actor id' do 
-    brad_287 = @service.get_movies_by_actor_id(287)
-    binding.pry
-
+  it 'returns best movies by actor id' do 
+    movies = @service.get_best_by_actor_id(287)
+    expect(movies[:total_results]).to eq(85)
   end
   
-  it 'returns movies by actor name' do 
+  it 'returns best movies by actor name' do 
+    movies = @service.get_best_by_actor('brad pitt')
+    expect(movies[:total_results]).to eq(85)
+  end
 
+  it 'returns worst movies by actor id' do 
+    movies = @service.get_worst_by_actor_id(287)
+    expect(movies[:total_results]).to eq(65)
+  end
+
+  it 'returns worst movies by actor name' do 
+    movies = @service.get_worst_by_actor('brad pitt')
+    expect(movies[:total_results]).to eq(65)
   end
 end
