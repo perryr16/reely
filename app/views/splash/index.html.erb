@@ -1,0 +1,13 @@
+<h1>Reely</h1>
+
+<section class="actor-search">
+  <h3>Search by Actor/Actress</h3>
+  <%= form_tag '/movie_search' do %>
+    <%= radio_button_tag(:search_type, "best") %>
+    <%= label_tag(:best, "Best Movies") %>
+    <%= radio_button_tag(:search_type, "worst") %>
+    <%= label_tag(:best, "Worst Movies") %>
+    <%= text_field_tag :search %>
+    <%= submit_tag "Search" %>
+  <% end %>
+</section>

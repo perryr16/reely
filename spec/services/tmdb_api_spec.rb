@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'hit the movie database api' do 
+xdescribe 'hit the movie database api' do 
   before :each do 
     @service = TmdbService.new
   end
