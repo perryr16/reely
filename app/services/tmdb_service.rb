@@ -45,6 +45,7 @@ class TmdbService
     response = conn.get("/3/movie/#{id}") do |res|
       res.params[:append_to_response] = 'videos'
     end
+    JSON.parse(response.body, symbolize_names: true)
   end
 
    
