@@ -10,7 +10,17 @@ class MovieSearchController < ApplicationController
 
   def create_game_objects
     results = MovieResults.new
-    results
+    movies = results.best_by(params[:search])
+    search_titles = movies.map {|movie| movie[:title]}
+    movie_ids(search_titles)
+  end
+
+  def movie_ids(search_titles)
+    session[:search_ids] = []
+    search_titles.each do |title|
+      movie = Movie.find_by(title: title)
+      session[:search_ids] << movie.id
+    end
   end
 
   def search_redirect

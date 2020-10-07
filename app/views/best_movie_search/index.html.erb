@@ -1,0 +1,27 @@
+<h1> <%= @actor %>'s Best Movies </h1>
+
+  <table>
+    <tr>
+      <th>Poster</th>
+      <th>Title</th>
+      <th>Release</th>
+      <th>Rating</th>
+      <th>Description</th>
+      <th>Trailer</th>
+
+    </tr>
+<% @movies.each do |movie| %>
+    <tr id = "movie-<%=movie.id%>">
+      <td><img class="poster" src="<%=movie.poster %>" alt="movie poster"></td>
+      <td><%=movie.title %></td>
+      <td><%=movie.year %></td>
+      <td><%=movie.rating %></td>
+      <td><%=movie.description %></td>
+      <td><iframe width="550" height="300" src="https://www.youtube.com/embed/<%=movie.trailer %>"></iframe>
+      </td>
+
+
+    </tr>
+      <%# <img class="trailer" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=1.00xw:0.669xh;0,0.190xh&resize=1200:*" alt="trailer"> %>
+<% end %>
+  </table>
