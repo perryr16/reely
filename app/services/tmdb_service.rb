@@ -16,7 +16,7 @@ class TmdbService
   def get_best_by_actor_id(id)
     response = conn.get("/3/discover/movie") do |res|
       res.params[:sort_by] = 'vote_average.desc'
-      res.params['vote_count.gte'] = 10
+      res.params['vote_count.gte'] = 100
       res.params[:with_cast] = id
     end
     JSON.parse(response.body, symbolize_names: true)
@@ -25,7 +25,7 @@ class TmdbService
   def get_worst_by_actor_id(id)
     response = conn.get("/3/discover/movie") do |res|
       res.params[:sort_by] = 'vote_average.asc'
-      res.params['vote_count.gte'] = 10
+      res.params['vote_count.gte'] = 100
       res.params[:with_cast] = id
     end
     JSON.parse(response.body, symbolize_names: true)

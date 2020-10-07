@@ -32,9 +32,11 @@ class MovieResults
 
   def create_actors(movie_list)
     movie_list.each do |movie|
-      cast = movie[:cast].split(', ')
-      cast.each do |actor|
-        add_actor_to_movie(movie, actor)
+      if movie[:cast]
+        cast = movie[:cast].split(', ')
+        cast.each do |actor|
+          add_actor_to_movie(movie, actor)
+        end
       end
     end
   end
@@ -49,9 +51,11 @@ class MovieResults
 
   def create_directors(movie_list)
     movie_list.each do |movie|
-      directors = movie[:director].split(', ') 
-      directors.each do |director|
-        add_director_to_movie(movie, director)
+      if movie[:director]
+        directors = movie[:director].split(', ') 
+        directors.each do |director|
+          add_director_to_movie(movie, director)
+        end
       end
     end
   end
@@ -79,13 +83,26 @@ class MovieResults
       data = @omdb.get_movie_data(movie[:imdb_id])
       movie[:imdb] = data[:imdbRating]
       movie[:metacritic] = data[:Metascore]
-      movie[:rotten] = data[:Ratings][1][:Value] if data[:Ratings][1]
+      movie[:rotten] = rotten_rating(data)
       movie[:cast] = data[:Actors]
       movie[:rated] = data[:Rated]
       movie[:year] = data[:Year]
       movie[:genre] = data[:Genre]
       movie[:director] = data[:Director]
     end
+  end
+
+  def rotten_rating(data)
+    if data[:Ratings]
+      rotten = data[:Ratings].find do |hash|
+        hash[:Source] == "Rotten Tomatoes"
+      end
+    end
+    if !rotten
+      rotten = {}
+      rotten[:Value] = 'n/a'
+    end
+    rotten[:Value] 
   end
 
   def new_movie_params(data)

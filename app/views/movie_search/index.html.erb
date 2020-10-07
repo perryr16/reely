@@ -1,0 +1,30 @@
+
+<h1> <%= @actor.titleize %>'s <%=@type.capitalize %> movies </h1>
+<% @movies.each do |movie| %>
+  <div class="grid-container">
+    <div class="">
+        <img class="poster" src="<%=movie.poster %>" alt="movie poster">
+    </div>
+    <div class="">
+        <h2><%=movie.title %> (<%=movie.year %>)</h2>
+        <p>Rated <%= movie.rated %></p>
+        <p><%=movie.genre %></p>
+        <table class="ratings">
+          <tr>
+            <th>IMDB</th>
+            <th>Rotten</th>
+            <th>Meta</th>
+          </tr>
+          <tr>
+            <td><%=movie.imdb %></td>
+            <td><%=movie.rotten %></td>
+            <td><%=movie.metacritic %></td>
+          </tr>
+        </table>
+        <p><%=movie.description %></p>
+    </div>
+    <div class="">
+        <iframe width="550" height="300" src="https://www.youtube.com/embed/<%=movie.trailer %>"></iframe>
+    </div>
+  </div>
+<% end %>

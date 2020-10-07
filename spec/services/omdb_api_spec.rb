@@ -5,7 +5,6 @@ describe 'OMDB service hits OMDB api' do
     service = OmdbService.new
     fight_club_id = "tt0137523"
     results = service.get_movie_data(fight_club_id)
-    # binding.pry
     expect(results[:Year]).to be_truthy
     expect(results[:Rated]).to be_truthy
     expect(results[:Genre]).to be_truthy
