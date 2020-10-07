@@ -90,3 +90,14 @@ body{
 .ital {
   font-style: italic;
 }
+.actor-link {
+  background-color: rgba(0,0,0,0);
+  color: goldenrod;
+  border: 0;
+  font-weight:bold;
+
+}
+.oneline {
+  white-space: nowrap;
+  display: inline;
+}

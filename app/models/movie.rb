@@ -1,4 +1,6 @@
+require 'i18n'
 class Movie < ApplicationRecord
+  
   has_many :movie_actors
   has_many :actors, through: :movie_actors
   has_many :movie_directors
@@ -8,6 +10,7 @@ class Movie < ApplicationRecord
     directors.map(&:name).uniq.join(', ')
   end
   def actor_list 
+    binding.pry
     actors.map(&:name).uniq.join(', ')
   end
 end
