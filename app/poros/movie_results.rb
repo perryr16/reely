@@ -9,6 +9,8 @@ class MovieResults
     data_list = get_trailers(data_list)
     data_list = get_omdb_data(data_list)
     create_movies(data_list)
+    create_actors(data_list)
+    create_directors(data_list)
   end
 
   def worst_by(actor)
@@ -16,6 +18,8 @@ class MovieResults
     data_list = get_trailers(data_list)
     data_list = get_omdb_data(data_list)
     create_movies(data_list)
+    create_actors(data_list)
+    create_directors(data_list)
   end
 
   def create_movies(list)
@@ -23,6 +27,40 @@ class MovieResults
       if !existing_movie(data[:title])
         Movie.create(new_movie_params(data))
       end
+    end
+  end
+
+  def create_actors(movie_list)
+    movie_list.each do |movie|
+      cast = movie[:cast].split(', ')
+      cast.each do |actor|
+        add_actor_to_movie(movie, actor)
+      end
+    end
+  end
+
+  def add_actor_to_movie(movie, actor)
+    if !existing_actor(actor)
+      Movie.find_by(title: movie[:title]).actors.create(name: actor)
+    else 
+      Movie.find_by(title: movie[:title]).actors << Actor.find_by(name: actor)
+    end
+  end
+
+  def create_directors(movie_list)
+    movie_list.each do |movie|
+      directors = movie[:director].split(', ') 
+      directors.each do |director|
+        add_director_to_movie(movie, director)
+      end
+    end
+  end
+
+  def add_director_to_movie(movie, director)
+    if !existing_director(director)
+      Movie.find_by(title: movie[:title]).directors.create(name: director)
+    else 
+      Movie.find_by(title: movie[:title]).directors << Director.find_by(name: director)
     end
   end
 
@@ -41,7 +79,7 @@ class MovieResults
       data = @omdb.get_movie_data(movie[:imdb_id])
       movie[:imdb] = data[:imdbRating]
       movie[:metacritic] = data[:Metascore]
-      movie[:rotten] = data[:Ratings][1][:Value]
+      movie[:rotten] = data[:Ratings][1][:Value] if data[:Ratings][1]
       movie[:cast] = data[:Actors]
       movie[:rated] = data[:Rated]
       movie[:year] = data[:Year]
@@ -49,8 +87,6 @@ class MovieResults
       movie[:director] = data[:Director]
     end
   end
-
-
 
   def new_movie_params(data)
     {
@@ -64,8 +100,6 @@ class MovieResults
       imdb_id: data[:imdb_id],
       poster: "https://image.tmdb.org/t/p/w200/#{data[:poster_path]}",
       description: data[:overview],
-      cast: data[:cast],
-      director: data[:director],
       rated: data[:rated],
       genre: data[:genre],
     }
@@ -73,6 +107,12 @@ class MovieResults
 
   def existing_movie(movie_title)
     Movie.find_by(title: movie_title)
+  end
+  def existing_actor(actor_name)
+    Actor.find_by(name: actor_name)
+  end
+  def existing_director(director_name)
+    Director.find_by(name: director_name)
   end
 
 end

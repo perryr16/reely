@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_07_162707) do
+ActiveRecord::Schema.define(version: 2020_10_07_163656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,10 +52,8 @@ ActiveRecord::Schema.define(version: 2020_10_07_162707) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "imdb_id"
-    t.string "cast"
     t.string "rated"
     t.string "genre"
-    t.string "director"
   end
 
   add_foreign_key "movie_actors", "actors"
