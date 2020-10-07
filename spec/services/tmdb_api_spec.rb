@@ -22,7 +22,7 @@ describe 'hit the movie database api' do
     #   movie_hash[:overview] = movie[:overview]
     #   movie_data << movie_hash
     # end
-    expect(movies[:total_results]).to eq(65)
+    expect(movies[:total_results]).to eq(49)
     expect(movies[:results][0][:id]).to be_truthy
     expect(movies[:results][0][:title]).to be_truthy
     expect(movies[:results][0][:release_date]).to be_truthy
@@ -34,7 +34,7 @@ describe 'hit the movie database api' do
   
   it 'returns best movies by actor name' do 
     movies = @service.get_best_by_actor('brad pitt')
-    expect(movies[:total_results]).to eq(65)
+    expect(movies[:total_results]).to eq(49)
     expect(movies[:results][0][:id]).to be_truthy
     expect(movies[:results][0][:title]).to be_truthy
     expect(movies[:results][0][:release_date]).to be_truthy
@@ -46,7 +46,7 @@ describe 'hit the movie database api' do
 
   it 'returns worst movies by actor id' do 
     movies = @service.get_worst_by_actor_id(287)
-    expect(movies[:total_results]).to eq(65)
+    expect(movies[:total_results]).to eq(49)
     expect(movies[:results][0][:id]).to be_truthy
     expect(movies[:results][0][:title]).to be_truthy
     expect(movies[:results][0][:release_date]).to be_truthy
@@ -58,7 +58,7 @@ describe 'hit the movie database api' do
 
   it 'returns worst movies by actor name' do 
     movies = @service.get_worst_by_actor('brad pitt')
-    expect(movies[:total_results]).to eq(65)
+    expect(movies[:total_results]).to eq(49)
     expect(movies[:results][0][:id]).to be_truthy
     expect(movies[:results][0][:title]).to be_truthy
     expect(movies[:results][0][:release_date]).to be_truthy

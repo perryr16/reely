@@ -13,32 +13,34 @@ class TmdbService
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def get_best_by_actor_id(id)
+  def get_best_by_actor_id(id, page=1)
     response = conn.get("/3/discover/movie") do |res|
       res.params[:sort_by] = 'vote_average.desc'
       res.params['vote_count.gte'] = 100
       res.params[:with_cast] = id
+      res.params[:page] = page
     end
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def get_worst_by_actor_id(id)
+  def get_worst_by_actor_id(id, page=1)
     response = conn.get("/3/discover/movie") do |res|
       res.params[:sort_by] = 'vote_average.asc'
       res.params['vote_count.gte'] = 100
       res.params[:with_cast] = id
+      res.params[:page] = page
     end
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def get_best_by_actor(actor)
+  def get_best_by_actor(actor, page=1)
     id = get_actor_id(actor)
-    get_best_by_actor_id(id)
+    get_best_by_actor_id(id, page)
   end
 
-  def get_worst_by_actor(actor)
+  def get_worst_by_actor(actor, page=1)
     id = get_actor_id(actor)
-    get_worst_by_actor_id(id)
+    get_worst_by_actor_id(id, page)
   end
 
   def get_trailer(id)

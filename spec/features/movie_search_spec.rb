@@ -9,6 +9,6 @@ describe 'best results by actor' do
       fill_in :search, with: "Brad Pitt"
       click_button "Search"
     end
-    expect(current_path).to eq("/best_movie_search")
+    expect(current_path).to eq("/movie_search")
   end
 end
