@@ -17,8 +17,10 @@ class MovieSearchController < ApplicationController
 
   def create_game_objects
     results = MovieResults.new
-    movies = results.best_by(params[:search], params[:p]) if params[:search_type] == "best"
-    movies = results.worst_by(params[:search], params[:p]) if params[:search_type] == "worst"
+    if params[:person_type] == "Actor's"
+      movies = results.best_by(params[:search], params[:p]) if params[:search_type] == "Best"
+      movies = results.worst_by(params[:search], params[:p]) if params[:search_type] == "Worst"
+    end
     search_titles = movies.map {|movie| movie[:title]}
     movie_ids(search_titles)
   end

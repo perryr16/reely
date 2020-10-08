@@ -59,7 +59,6 @@ body{
   width: 120px;
 }
 .btn {
-  float:left;
   color:black;
   background-color: goldenrod;
   text-decoration:none;
@@ -67,8 +66,14 @@ body{
   border: 3px;
   border-radius: 5px;
 }
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
 .btn:hover {
-  background-color: #ddd;
+  background-color:teal;
   color: black;
 }
 .main_menu {
@@ -100,4 +105,22 @@ body{
 .oneline {
   white-space: nowrap;
   display: inline;
+}
+.marged {
+  margin-right: 20px;
+}
+.height-20 {
+  height: 20px;
+}
+.btn-20 {
+  color:black;
+  background-color: goldenrod;
+  text-decoration:none;
+  padding: 3px;
+  border: 3px;
+  border-radius: 5px;
+}
+.btn-20:hover {
+  background-color: teal;
+  color: black;
 }
