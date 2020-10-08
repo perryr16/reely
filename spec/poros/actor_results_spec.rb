@@ -3,11 +3,11 @@ require 'rails_helper'
 describe "Create movie objects from API call" do
 
   before :each do 
-    @results = MovieResults.new
+    @results = ActorResults.new
   end
 
   it "creates base characteristics of a movie from best" do 
-    @results.best_by("brad pitt")
+    @results.best_acted("brad pitt")
     movie1 = Movie.all[-1]
     movie2 = Movie.all[-2]
     expect(movie1).to_not equal(movie2)
@@ -43,7 +43,7 @@ describe "Create movie objects from API call" do
   end
 
   it "creates base characteristics of a movie from worst" do 
-    @results.worst_by("brad pitt")
+    @results.worst_acted("brad pitt")
     movie1 = Movie.all[-1]
     movie2 = Movie.all[-2]
 
@@ -77,6 +77,18 @@ describe "Create movie objects from API call" do
     expect(movie2.imdb).to be_truthy
     expect(movie2.metacritic).to be_truthy
     expect(movie2.rotten).to be_truthy if movie2.rotten
+  end
+
+  it "creates best directed movie list" do 
+    best = @results.best_directed("george lucas")
+    expect(best[0][:imdb].to_f >= best[1][:imdb].to_f).to eq(true)
+    expect(best[-2][:imdb].to_f >= best[-1][:imdb].to_f).to eq(true)
+  end
+
+  it "creates worst direced movie list" do 
+    best = @results.worst_directed("george lucas")
+    expect(best[0][:imdb].to_f <= best[1][:imdb].to_f).to eq(true)
+    expect(best[-2][:imdb].to_f <= best[-1][:imdb].to_f).to eq(true)
   end
 
 end
