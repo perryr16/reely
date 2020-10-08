@@ -3,12 +3,16 @@ class MovieSearchController < ApplicationController
   def index 
     @actor = session[:search]
     @type = session[:type]
-    @movies = Movie.find(session[:search_ids])
+    @movies = Movie.find(session[:search_ids]) if session[:search_ids]
+    session[:page] += 1 if params[:page] == "next"
+    session[:page] -= 1 if params[:page] == "back"
+    @page = session[:page]
   end
 
   def create 
     session[:search] = params[:search]
     session[:type] = params[:search_type]
+    session[:page] = 0
     create_game_objects
     redirect_to movie_search_index_path
   end
@@ -16,13 +20,17 @@ class MovieSearchController < ApplicationController
   private 
 
   def create_game_objects
-    results = MovieResults.new
+    results = ActorResults.new
     if params[:person_type] == "Actor's"
-      movies = results.best_by(params[:search], params[:p]) if params[:search_type] == "Best"
-      movies = results.worst_by(params[:search], params[:p]) if params[:search_type] == "Worst"
+      movies = results.best_acted(params[:search]) if params[:search_type] == "Best"
+      movies = results.worst_acted(params[:search]) if params[:search_type] == "Worst"
+    elsif params[:person_type] == "Director's"
+      movies = results.best_directed(params[:search]) if params[:search_type] == "Best"
+      movies = results.worst_directed(params[:search]) if params[:search_type] == "Worst"
     end
-    search_titles = movies.map {|movie| movie[:title]}
-    movie_ids(search_titles)
+    # binding.pry
+    search_titles = movies.map {|movie| movie[:title]} if movies
+    movie_ids(search_titles) if movies
   end
 
   def movie_ids(search_titles)
@@ -32,10 +40,5 @@ class MovieSearchController < ApplicationController
       session[:search_ids] << movie.id
     end
   end
-
-  # def search_redirect
-  #   redirect_to best_movie_search_index_path if params[:search_type] == "best"
-  #   redirect_to worst_movie_search_index_path if params[:search_type] == "worst"
-  # end
   
 end
