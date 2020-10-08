@@ -10,18 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_05_202146) do
+ActiveRecord::Schema.define(version: 2020_10_07_163656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "movie_people", force: :cascade do |t|
+  create_table "actors", force: :cascade do |t|
+    t.string "name"
+    t.string "imdb_id"
+  end
+
+  create_table "directors", force: :cascade do |t|
+    t.string "name"
+    t.string "imdb_id"
+  end
+
+  create_table "movie_actors", force: :cascade do |t|
     t.bigint "movie_id", null: false
-    t.bigint "person_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["movie_id"], name: "index_movie_people_on_movie_id"
-    t.index ["person_id"], name: "index_movie_people_on_person_id"
+    t.bigint "actor_id", null: false
+    t.index ["actor_id"], name: "index_movie_actors_on_actor_id"
+    t.index ["movie_id"], name: "index_movie_actors_on_movie_id"
+  end
+
+  create_table "movie_directors", force: :cascade do |t|
+    t.bigint "movie_id", null: false
+    t.bigint "director_id", null: false
+    t.index ["director_id"], name: "index_movie_directors_on_director_id"
+    t.index ["movie_id"], name: "index_movie_directors_on_movie_id"
   end
 
   create_table "movies", force: :cascade do |t|
@@ -36,14 +51,13 @@ ActiveRecord::Schema.define(version: 2020_10_05_202146) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "imdb_id"
+    t.string "rated"
+    t.string "genre"
   end
 
-  create_table "people", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  add_foreign_key "movie_people", "movies"
-  add_foreign_key "movie_people", "people"
+  add_foreign_key "movie_actors", "actors"
+  add_foreign_key "movie_actors", "movies"
+  add_foreign_key "movie_directors", "directors"
+  add_foreign_key "movie_directors", "movies"
 end
