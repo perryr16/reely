@@ -67,7 +67,6 @@ class ActorResults
 
 
   def create_movies(list)
-    # return if !list
     movies = []
     list.each do |data|
       if !existing_movie?(data[:title])
@@ -78,7 +77,6 @@ class ActorResults
   end
 
   def create_actors(movie_list)
-    # return if movie_list
     movie_list.each do |movie|
       if movie[:cast]
         cast = movie[:cast].split(', ')
@@ -119,18 +117,19 @@ class ActorResults
   end
 
   def get_trailers(movie_list)
-    # return if !movie_list
     movie_list.each do |movie|
       data = @tmdb.get_trailer(movie[:id])
       movie[:imdb_id] = data[:imdb_id]
-      trailer = data[:videos][:results].find {|video| video[:type] == "Trailer"}
-      movie[:trailer] = trailer[:key] if trailer
-      movie[:trailer] = "empty" if !trailer
+      if data[:videos]
+        trailer = data[:videos][:results].find {|video| video[:type] == "Trailer"}
+        movie[:trailer] = trailer[:key] if trailer
+      else
+        movie[:trailer] = "empty" if !trailer
+      end
     end
   end
 
   def get_omdb_data(movie_list)
-    # return if !movie_list
     movie_list.each do |movie|
       data = @omdb.get_movie_data(movie[:imdb_id])
       movie[:imdb] = data[:imdbRating]

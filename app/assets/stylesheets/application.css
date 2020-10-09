@@ -34,9 +34,7 @@
 }
 .grid-2 {
   display: grid;
-  /* grid-row-gap: 40px; */
   grid-template-columns: 200px 200px;
-  padding: 10px;
 }
 .padded {
   padding-bottom: 10px;
