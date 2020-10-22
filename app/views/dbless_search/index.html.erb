@@ -1,16 +1,17 @@
 <% require 'i18n' %>
 <div class="content">
-  <% if @data[:movie_list] %>
+  <% if @data[:movies] %>
     <h1> <%= @data[:search].titleize %>'s <%=@data[:type].capitalize %> Movies </h1>
-    <% @data[:movie_list][0+(20*@data[:page])..19+(20*@data[:page])].each do |movie| %>
+    <% @data[:movies][0+(20*@data[:page])..19+(20*@data[:page])].each do |movie| %>
     <div class="padded">
       <div class="grid-3">
         <div class="">
-            <img class="poster" src="<%=movie.poster %>" alt="movie poster">
+        <% binding.pry %>
+            <img class="poster" src="<%=movie[:poster] %>" alt="movie poster">
         </div>
         <div class="">
-            <h2><%=movie.title %> (<%=movie.year %> <%=movie.rated %>)</h2>
-            <p><%=movie.genre %></p>
+            <h2><%=movie[:title] %> (<%=movie[:year] %> <%=movie[:rated] %>)</h2>
+            <p><%=movie[:genre] %></p>
             <table class="ratings">
               <tr>
                 <th>IMDB</th>
@@ -18,9 +19,9 @@
                 <th>Meta</th>
               </tr>
               <tr>
-                <td><%=movie.imdb %></td>
-                <td><%=movie.rotten %></td>
-                <td><%=movie.metacritic %></td>
+                <td><%=movie[:imdb] %></td>
+                <td><%=movie[:rotten] %></td>
+                <td><%=movie[:metacritic] %></td>
               </tr>
             </table>
             <div class="grid-2">
@@ -39,7 +40,7 @@
                 </p>
               </div>
             </div>
-            <p class="ital"><%=movie.description %></p>
+            <p class="ital"><%=movie[:description] %></p>
         </div>
         <div class="">
             <iframe width="550" height="300" src="https://www.youtube.com/embed/<%=movie.trailer %>" allowfullscreen="allowfulllscreen"></iframe>

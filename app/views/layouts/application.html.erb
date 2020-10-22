@@ -22,7 +22,7 @@
       <% end %>
       </section>
       <section class="movie-search">
-      <%= form_tag "/dbless_search" do %>
+      <%= form_tag "/dbless_search", method: "get" do %>
         <%= select_tag :person_type, options_for_select(["Actor's","Director's"]), required: :true, class: "height-20"%>
         <%= select_tag :search_type, options_for_select(["Best","Worst"]), required: :true, class: "height-20"%>
         <%= text_field_tag :search, '', size: 75%>
