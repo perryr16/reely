@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   # resources :best_movie_search, only: [:index]
   # resources :worst_movie_search, only: [:index]
   resources :movie_search, only: [:create, :index]
+  resources :dbless_search, only: [:create, :index]
 end

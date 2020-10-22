@@ -34,9 +34,7 @@
 }
 .grid-2 {
   display: grid;
-  /* grid-row-gap: 40px; */
   grid-template-columns: 200px 200px;
-  padding: 10px;
 }
 .padded {
   padding-bottom: 10px;
@@ -105,8 +103,12 @@ body{
   background-color: rgba(0,0,0,0);
   color: goldenrod;
   border: 0;
-  font-weight:bold;
+  /* font-weight:bold; */
+  text-decoration: none;
 
+}
+.actor-link:hover{
+  text-decoration: underline;
 }
 .oneline {
   white-space: nowrap;

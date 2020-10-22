@@ -28,7 +28,6 @@ class MovieSearchController < ApplicationController
       movies = results.best_directed(params[:search]) if params[:search_type] == "Best"
       movies = results.worst_directed(params[:search]) if params[:search_type] == "Worst"
     end
-    # binding.pry
     search_titles = movies.map {|movie| movie[:title]} if movies
     movie_ids(search_titles) if movies
   end
