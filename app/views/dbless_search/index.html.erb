@@ -6,7 +6,6 @@
     <div class="padded">
       <div class="grid-3">
         <div class="">
-        <% binding.pry %>
             <img class="poster" src="<%=movie[:poster] %>" alt="movie poster">
         </div>
         <div class="">
@@ -26,34 +25,38 @@
             </table>
             <div class="grid-2">
               <div class="">
-                <p>Staring 
-                <% movie.actors.each do |actor| %>
-                  <%= button_to actor.name, "/movie_search?search_type=Best&person_type=Actor's&search=#{I18n.transliterate(actor.name)}", method: :post, class: "actor-link"%> 
+                <p>Staring <br>
+                <% movie[:cast].each do |actor| %>
+                  <%= link_to actor, "/dbless_search?search_type=Best&person_type=Actor's&search=#{I18n.transliterate(actor)}", method: :get, class: "actor-link"%> 
+                  <br>
                 <% end %>
                 </p>
               </div>
               <div class="">
-                <p>Directed by 
-                <% movie.directors.each do |director| %>
-                  <%= button_to director.name, "/movie_search?search_type=Best&person_type=Director's&search=#{I18n.transliterate(director.name)}", method: :post, class: "actor-link"%> 
+                <p>Directed by <br>
+                <% if movie[:directors] %>
+                  <% movie[:directors].each do |director| %>
+                    <%= link_to director, "/dbless_search?search_type=Best&person_type=Director's&search=#{I18n.transliterate(director)}", method: :get, class: "actor-link"%> 
+                    <br>
+                  <% end %>
                 <% end %>
-                </p>
+                  </p>
               </div>
             </div>
             <p class="ital"><%=movie[:description] %></p>
         </div>
         <div class="">
-            <iframe width="550" height="300" src="https://www.youtube.com/embed/<%=movie.trailer %>" allowfullscreen="allowfulllscreen"></iframe>
+            <iframe width="550" height="300" src="https://www.youtube.com/embed/<%=movie[:trailer] %>" allowfullscreen="allowfulllscreen"></iframe>
         </div>
       </div>
     </div>
     <% end %>
     <% if @data[:page] > 0 %>
-      <%= link_to 'previous page', "/movie_search?page=back", class: "btn left marged"%>
+      <%= link_to 'previous page', "/dbless_search?page=back", class: "btn left marged"%>
     <% end %>
     <%# <br><br>
     <br> %>
-    <%= link_to 'next page', "/movie_search?page=next", class: "btn left"%>
+    <%= link_to 'next page', "/dbless_search?page=next", class: "btn left"%>
     <br>
   <% else %>
     <p>No Search Results Found</p>
