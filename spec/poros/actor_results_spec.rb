@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Create movie objects from API call" do
+xdescribe "Create movie objects from API call" do
 
   before :each do 
     @results = ActorResults.new

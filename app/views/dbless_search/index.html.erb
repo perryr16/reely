@@ -7,9 +7,18 @@
       <div class="grid-3">
         <div class="">
             <img class="poster" src="<%=movie[:poster] %>" alt="movie poster">
+            <%= button_to user_movies_path(movie), method: :post, class: "transparent save-movie" do %>
+              <i class="fa fa-save fa-4x", aria-hidden="true"></i>
+            <% end %>
         </div>
         <div class="">
-            <h2><%=movie[:title] %> (<%=movie[:year] %> <%=movie[:rated] %>)</h2>
+            <h2><%=movie[:title] %> (
+              <% if movie[:year]%>
+              <%=movie[:year][0..3] %> 
+              <% end %>
+              <% if movie[:rated] %>
+              <%=movie[:rated] %>)
+              <% end %></h2>
             <p><%=movie[:genre] %></p>
             <table class="ratings">
               <tr>
@@ -26,9 +35,11 @@
             <div class="grid-2">
               <div class="">
                 <p>Staring <br>
-                <% movie[:cast].each do |actor| %>
-                  <%= link_to actor, "/dbless_search?search_type=Best&person_type=Actor's&search=#{I18n.transliterate(actor)}", method: :get, class: "actor-link"%> 
-                  <br>
+                <% if movie[:cast] %>
+                  <% movie[:cast].each do |actor| %>
+                    <%= link_to actor, "/dbless_search?search_type=Best&person_type=Actor's&search=#{I18n.transliterate(actor)}", method: :get, class: "actor-link"%> 
+                    <br>
+                  <% end %>
                 <% end %>
                 </p>
               </div>

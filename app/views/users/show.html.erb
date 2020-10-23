@@ -1,0 +1,63 @@
+<div class="content">
+
+
+<h1><%= @user.name %></h1>
+<h3><%= @user.email %></h3>
+<% require 'i18n' %>
+<div class="content">
+  <% if @user.movies %>
+    <h2>Saved Movies</h2>
+    <% @user.movies.each do |movie| %>
+    <div class="padded">
+      <div class="grid-3">
+        <div class="">
+            <img class="poster" src="<%=movie.poster %>" alt="movie poster">
+             <%= button_to user_movie_path(movie.id), method: :delete, class: "transparent save-movie" do %>
+              <i class="fa fa-trash fa-5x"></i>
+            <% end %>
+        </div>
+        <div class="">
+            <h2><%=movie.title %> (<%=movie.year %> <%=movie.rated %>)</h2>
+            <p><%=movie.genre %></p>
+            <table class="ratings">
+              <tr>
+                <th>IMDB</th>
+                <th>Rotten</th>
+                <th>Meta</th>
+              </tr>
+              <tr>
+                <td><%=movie.imdb %></td>
+                <td><%=movie.rotten %></td>
+                <td><%=movie.metacritic %></td>
+              </tr>
+            </table>
+            <div class="grid-2">
+              <div class="">
+                <p>Staring <br>
+                <% movie.actors.each do |actor| %>
+                  <%= link_to actor.name, "/dbless_search?search_type=Best&person_type=Actor's&search=#{I18n.transliterate(actor.name)}", class: "actor-link"%> 
+                  <br>
+                <% end %>
+                </p>
+              </div>
+              <div class="">
+                <p>Directed by <br>
+                <% movie.directors.each do |director| %>
+                  <%= link_to director.name, "/dbless_search?search_type=Best&person_type=Director's&search=#{I18n.transliterate(director.name)}", class: "actor-link"%> 
+                <% end %>
+                </p>
+              </div>
+            </div>
+            <p class="ital"><%=movie.description %></p>
+        </div>
+        <div class="">
+            <iframe width="550" height="300" src="https://www.youtube.com/embed/<%=movie.trailer %>" allowfullscreen="allowfulllscreen"></iframe>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  <% else %>
+    <p>No Search Results Found</p>
+  <%end %>
+</div>
+</div>

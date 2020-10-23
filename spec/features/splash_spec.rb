@@ -31,7 +31,7 @@ describe "splash page" do
       fill_in :search, with: "adfadf"
       click_button "Search"
     end
-    expect(current_path).to eq("/movie_search")
+    expect(current_path).to eq("/dbless_search")
     expect(page).to have_content("No Search Results Found")
   end
 end
