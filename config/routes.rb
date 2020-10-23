@@ -6,4 +6,10 @@ Rails.application.routes.draw do
   # resources :worst_movie_search, only: [:index]
   resources :movie_search, only: [:create, :index]
   resources :dbless_search, only: [:create, :index]
+  resources :user_movies, only: [:create, :index, :destroy]
+
+  get 'auth/:provider/callback', to: 'sessions#create'
+
+  get '/profile', to: 'users#show'
+  get '/logout', to: 'sessions#destroy'
 end

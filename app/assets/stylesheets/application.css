@@ -12,7 +12,9 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
+
 
 .background img {
   z-index: -1;
@@ -132,3 +134,60 @@ body{
   background-color: teal;
   color: black;
 }
+.menu-button {
+  float: left;
+}
+.menu-link {
+  position: relative;
+  float: left;
+  text-decoration: none;
+}
+.user-message {
+  margin-top:1px;
+  margin-bottom: 1px;
+  margin-left: 70vw;
+}
+
+.transparent {
+  background:transparent;
+  border:none;
+  color: white;
+}
+.transparent:hover {
+    color: #e9c318;
+  }
+
+
+/* .nav-tabs .nav-item {
+  margin-bottom: -1px;
+}
+.nav-tabs .nav-link {
+  border: 1px solid transparent;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+  border-color: #e9ecef #e9ecef #dee2e6;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  color: #495057;
+  background-color: #fff;
+  border-color: #dee2e6 #dee2e6 #fff;
+}
+
+.nav-pills .nav-link {
+  border-radius: 0.25rem;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #64a19d;
+}
+
+.nav-fill .nav-item {
+  flex: 1 1 auto;
+  text-align: center;
+} */
