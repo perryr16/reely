@@ -20,6 +20,8 @@ gem 'rspec-rails'
 gem 'factory_bot_rails'
 gem 'faker'
 gem 'dotenv-rails'
+gem 'omniauth-google-oauth2'
+gem 'omniauth'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
