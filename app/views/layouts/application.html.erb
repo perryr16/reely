@@ -20,8 +20,19 @@
         <%= text_field_tag :search, '', size: 75%>
         <%= submit_tag "Search", class: "btn-20 heigh-20"%>
       <% end %>
+      <% if current_user.nil? %>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/auth/google_oauth2">Log In with Google</a></li>
+      <% else %>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/profile">Profile</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/logout">Logout</a></li>
+      <% end %>
       </section>
     </div>
+    <% flash.each do |type, message| %>
+      <section class=<%= type %>>
+        <p class="user-message"><%= message %></p>
+      </section>
+    <% end %>
     <%= yield %>
   </body>
 </html>

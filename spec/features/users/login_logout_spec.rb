@@ -20,7 +20,7 @@ describe 'As a user I can log in' do
     })
 
     visit '/'
-    within('.navbar') do
+    within('.main_menu') do
       click_link 'Log In with Google'
     end
     expect(page).to have_content("Logged in as #{user.name}")
@@ -47,7 +47,7 @@ describe 'As a user I can log in' do
 
     visit '/'
 
-    within('.navbar') do
+    within('.main_menu') do
       click_link 'Log In with Google'
     end
 
@@ -57,7 +57,7 @@ describe 'As a user I can log in' do
     expect(page).to have_content('You have been logged out.')
     expect(current_path).to eq('/')
   
-    within('.navbar') do
+    within('.main_menu') do
       expect(page).to have_content('Log In with Google')
     end
   end
