@@ -1,9 +1,7 @@
 class DblessSearchController < ApplicationController
 
   def index
-    @data = {movies: create_movie_list, search: params[:search], type: params[:search_type], page:0}
-    @data[:page] += 1 if params[:page] == "next"
-    @data[:page] -= 1 if params[:page] == "back"
+    @data = {movies: create_movie_list, search: params[:search], type: params[:search_type]}
   end
 
   # def create 

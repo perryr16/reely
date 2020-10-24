@@ -2,7 +2,7 @@
 <div class="content">
   <% if @data[:movies] %>
     <h1> <%= @data[:search].titleize %>'s <%=@data[:type].capitalize %> Movies </h1>
-    <% @data[:movies][0+(20*@data[:page])..19+(20*@data[:page])].each do |movie| %>
+    <% @data[:movies][0..50].each do |movie| %>
     <div class="padded">
       <div class="grid-3">
         <div class="">
@@ -62,13 +62,6 @@
       </div>
     </div>
     <% end %>
-    <% if @data[:page] > 0 %>
-      <%= link_to 'previous page', "/dbless_search?page=back", class: "btn left marged"%>
-    <% end %>
-    <%# <br><br>
-    <br> %>
-    <%= link_to 'next page', "/dbless_search?page=next", class: "btn left"%>
-    <br>
   <% else %>
     <p>No Search Results Found</p>
   <%end %>
