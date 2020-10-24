@@ -23,7 +23,7 @@ class Movie < ApplicationRecord
     end
     if self.directors == []
       directors.each do |director|
-        self.director << Director.create(name: director)
+        self.directors << Director.create(name: director)
       end
     end
   end
