@@ -25,6 +25,7 @@ class UserMoviesController < ApplicationController
     if !Movie.find_by(title: params[:title])
       movie = Movie.create(movie_params)
       movie.add_crew(params[:cast], params[:directors])
+      movie
     else 
       movie = Movie.find_by(title: params[:title])
     end

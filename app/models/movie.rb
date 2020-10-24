@@ -23,6 +23,7 @@ class Movie < ApplicationRecord
     end
     if self.directors == []
       directors.each do |director|
+        binding.pry
         self.directors << Director.create(name: director)
       end
     end
