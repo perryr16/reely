@@ -12,7 +12,7 @@ describe "splash page" do
     expect(current_path).to eq("/dbless_search")
   end
   
-  xit 'searches correctly - actor worst' do 
+  it 'searches correctly - actor worst' do 
     visit '/'
     within('.movie-search') do 
       select "Actor's"
@@ -20,7 +20,7 @@ describe "splash page" do
       fill_in :search, with: "Brad Pitt"
       click_button "Search"
     end
-    expect(current_path).to eq("/dblrd_search")
+    expect(current_path).to eq("/dbless_search")
   end
 
   it 'searches incorrectly -  actor worst' do 
