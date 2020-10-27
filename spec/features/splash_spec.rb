@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "splash page" do 
-  xit "has a search field for best movies by actor" do 
+  it "has a search field for best movies by actor" do 
     visit '/'
     within('.movie-search') do 
       select "Actor's"
@@ -9,7 +9,7 @@ describe "splash page" do
       fill_in :search, with: "Brad Pitt"
       click_button "Search"
     end
-    expect(current_path).to eq("/movie_search")
+    expect(current_path).to eq("/dbless_search")
   end
   
   xit 'searches correctly - actor worst' do 
@@ -20,7 +20,7 @@ describe "splash page" do
       fill_in :search, with: "Brad Pitt"
       click_button "Search"
     end
-    expect(current_path).to eq("/movie_search")
+    expect(current_path).to eq("/dblrd_search")
   end
 
   it 'searches incorrectly -  actor worst' do 
