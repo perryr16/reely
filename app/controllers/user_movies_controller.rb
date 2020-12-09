@@ -3,13 +3,15 @@ class UserMoviesController < ApplicationController
     movie = create_or_find_movie
     if !current_user
       flash[:notice] = "you must sign in to save movies"
+      redirect_back(fallback_location: '/profile')
     elsif UserMovie.user_movie_exists?(current_user.id, movie.id)
       flash[:notice] = "you have already saved this movie"
+      redirect_back(fallback_location: '/profile')
     else 
       current_user.movies << movie 
       flash[:notice] = "you have saved #{movie.title}"
+      redirect_to '/profile'
     end
-    redirect_to '/profile'
   end
 
   def destroy 
