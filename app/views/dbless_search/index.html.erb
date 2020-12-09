@@ -7,9 +7,15 @@
       <div class="grid-3">
         <div class="">
             <img class="poster" src="<%=movie[:poster] %>" alt="movie poster">
-            <%= button_to user_movies_path(movie), method: :post, class: "transparent save-movie" do %>
-              <i class="fa fa-save fa-4x", aria-hidden="true"></i>
+            <% if current_user %>
+              <%= button_to user_movies_path(movie), method: :post, class: "transparent save-movie" do %>
+                <i class="fa fa-save fa-4x", aria-hidden="true"></i>
+              <% end %>
+            <% else %>
+                <i class="fa fa-save fa-4x", aria-hidden="true"></i>
+                <p class="small ital">You must login to save movies</p>
             <% end %>
+
         </div>
         <div class="">
             <h2><%=movie[:title] %> (
