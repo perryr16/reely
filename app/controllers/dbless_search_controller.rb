@@ -2,6 +2,7 @@ class DblessSearchController < ApplicationController
 
   def index
     @data = {movies: create_movie_list, search: params[:search], type: params[:search_type]}
+    
   end
 
   # def create 
