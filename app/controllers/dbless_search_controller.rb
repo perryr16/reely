@@ -2,18 +2,8 @@ class DblessSearchController < ApplicationController
 
   def index
     @data = {movies: create_movie_list, search: params[:search], type: params[:search_type]}
-  end
 
-  # def create 
-  #   binding.pry
-  #   session[:search_data] = 
-  #     {search: params[:search], 
-  #     type: params[:search_type],
-  #     page: 0
-  #     }
-  #   # create_movie_list
-  #   redirect_to dbless_search_index_path
-  # end
+  end
 
   private 
   

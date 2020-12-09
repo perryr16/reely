@@ -146,6 +146,9 @@ body{
   margin-top:1px;
   margin-bottom: 1px;
   margin-left: 70vw;
+  color: #e9c318;
+  font-style: italic;
+  font-weight: bold;
 }
 
 .transparent {
@@ -156,7 +159,16 @@ body{
 .transparent:hover {
     color: #e9c318;
   }
-
+.yellow {
+  color: #e9c318;
+  font-style: italic;
+}
+.indent {
+  padding: 30px;
+}
+.small {
+  font-size: small;
+}
 
 /* .nav-tabs .nav-item {
   margin-bottom: -1px;
