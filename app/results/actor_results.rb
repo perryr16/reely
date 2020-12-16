@@ -4,24 +4,6 @@ class ActorResults
     @omdb = OmdbService.new
   end
 
-  # def best_by(actor, page=1)
-  #   data_list = @tmdb.get_best_by_actor(actor, page)[:results]
-  #   data_list = get_trailers(data_list)
-  #   data_list = get_omdb_data(data_list)
-  #   create_movies(data_list)
-  #   create_actors(data_list)
-  #   create_directors(data_list)
-  # end
-
-  # def worst_by(actor, page=1)
-  #   data_list = @tmdb.get_worst_by_actor(actor, page)[:results]
-  #   data_list = get_trailers(data_list)
-  #   data_list = get_omdb_data(data_list)
-  #   create_movies(data_list)
-  #   create_actors(data_list)
-  #   create_directors(data_list)
-  # end
-
   def all_directed(director)
     data_list = @tmdb.get_all_by_director(director)
     data_list = get_trailers(data_list)

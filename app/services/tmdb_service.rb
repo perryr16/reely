@@ -1,52 +1,17 @@
 class TmdbService 
 
   def get_actor_id(actor)
-    response = conn.get('/3/search/person') do |res|
-      res.params[:query] = actor 
+    response = conn.get('/3/search/person') do |req|
+      req.params[:query] = actor 
     end
     json = JSON.parse(response.body, symbolize_names: true)
     return "n/a" if json[:results].empty?
     json[:results][0][:id]
   end
 
-  # def get_credits_by_actor_id(id)
-  #   response = conn.get("/3/person/#{id}/movie_credits")
-  #   JSON.parse(response.body, symbolize_names: true)
-  # end
-
-  # def get_best_by_actor_id(id, page=1)
-  #   response = conn.get("/3/discover/movie") do |res|
-  #     res.params[:sort_by] = 'vote_average.desc'
-  #     res.params['vote_count.gte'] = 100
-  #     res.params[:with_cast] = id
-  #     res.params[:page] = page
-  #   end
-  #   JSON.parse(response.body, symbolize_names: true)
-  # end
-
-  # def get_worst_by_actor_id(id, page=1)
-  #   response = conn.get("/3/discover/movie") do |res|
-  #     res.params[:sort_by] = 'vote_average.asc'
-  #     res.params['vote_count.gte'] = 100
-  #     res.params[:with_cast] = id
-  #     res.params[:page] = page
-  #   end
-  #   JSON.parse(response.body, symbolize_names: true)
-  # end
-
-  # def get_best_by_actor(actor, page=1)
-  #   id = get_actor_id(actor)
-  #   get_best_by_actor_id(id, page)
-  # end
-
-  # def get_worst_by_actor(actor, page=1)
-  #   id = get_actor_id(actor)
-  #   get_worst_by_actor_id(id, page)
-  # end
-
   def get_trailer(id)
-    response = conn.get("/3/movie/#{id}") do |res|
-      res.params[:append_to_response] = 'videos'
+    response = conn.get("/3/movie/#{id}") do |req|
+      req.params[:append_to_response] = 'videos'
     end
     JSON.parse(response.body, symbolize_names: true)
   end
@@ -54,6 +19,15 @@ class TmdbService
   def get_all_by_director_id(id)
     response = conn.get("/3/person/#{id}/combined_credits")
     JSON.parse(response.body, symbolize_names:true)
+  end
+
+  def get_search_title(title)
+    response = conn.get('/3/search/movie') do |req|
+      req.params[:query] = title 
+    end
+    json = JSON.parse(response.body, symbolize_names: true)
+    return "n/a" if json[:results].empty?
+    json[:results][0][:id]
   end
 
   def get_all_by_actor_id(id)
@@ -70,6 +44,8 @@ class TmdbService
     id = get_actor_id(actor)
     directed = get_all_by_actor_id(id)[:cast]
   end
+
+
 
   def conn 
     Faraday.new('http://api.themoviedb.org') do |res|
