@@ -12,14 +12,5 @@ describe 'movie search by title' do
     expect(current_path).to eq("/dbless_search")
     save_and_open_page 
    end
-  xit 'searches correctly actor worst' do 
-    visit '/dbless_search'
-    within('.movie-search') do 
-      select "Actor's"
-      select "Worst"
-      fill_in :search, with: "Brad Pitt"
-      click_button "Search"
-    end
-    expect(current_path).to eq("/dbless_search")
-  end
+
 end

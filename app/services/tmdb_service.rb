@@ -27,7 +27,7 @@ class TmdbService
     end
     json = JSON.parse(response.body, symbolize_names: true)
     return "n/a" if json[:results].empty?
-    json[:results][0][:id]
+    json[:results]
   end
 
   def get_all_by_actor_id(id)
