@@ -1,18 +1,27 @@
 require 'rails_helper'
 
-describe 'movie search by title' do 
+describe 'best results by actor' do 
+  before :each do 
+    visit '/'
+    within('.movie-search') do 
+      select "Actor's"
+      select "Best"
+      fill_in :search, with: "Brad Pitt"
+      click_button "Search"
+    end
+  end
   
-  it 'searches correctly by title' do 
+  it 'searches correctly actor best' do 
     visit '/dbless_search'
     within('.movie-search') do 
-      select "Title"
-      fill_in :search, with: "The Shining"
+      select "Actor's"
+      select "Best"
+      fill_in :search, with: "Brad Pitt"
       click_button "Search"
     end
     expect(current_path).to eq("/dbless_search")
-    save_and_open_page 
-   end
-  xit 'searches correctly actor worst' do 
+  end
+  it 'searches correctly actor worst' do 
     visit '/dbless_search'
     within('.movie-search') do 
       select "Actor's"

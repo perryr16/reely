@@ -41,6 +41,13 @@ class DblessResults
     all.sort_by {|m| m[:imdb].to_f}.reverse
   end
 
+  def by_title(title)
+    data_list = @tmdb.get_search_title(title)
+    data_list = get_trailers(data_list)
+    data_list = get_omdb_data(data_list)
+    movie_list = create_movie_list(data_list)
+  end
+
 
   def get_trailers(movie_list)
     movie_list.each do |movie|
