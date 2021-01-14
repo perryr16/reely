@@ -14,7 +14,47 @@
  *= require_self
  *= require font-awesome
  */
+ @font-face {
+   font-family: 'BlockLetter';
+   src: url('Blockletter.otf');
+ }
+@font-face {
+  font-family: 'DeathStar';
+  src: url('Death\ Star.otf');
+}
+@font-face {
+   font-family: 'DurangoWestern';
+   src: url('Durango\ Western\ Eroded\ Demo.otf');
+}
+@font-face {
+   font-family: 'MovieFilmStrip';
+   src: url('Movie\ Filmstrip.ttf');
+}
+@font-face {
+   font-family: 'RoadMovie';
+   src: url('ROADMOVIE\ TRIAL___.ttf');
+}
+@font-face {
+   font-family: 'Credits';
+   src: url('CreatorCreditsBB.ttf');
+}
 
+.BlockLetter {
+  font-family: 'BlockLetter';
+}
+
+.RoadMovie {
+  font-family: 'RoadMovie'
+}
+.credits {
+  font-family: 'Credits'
+}
+.huge {
+  font-size: 100px;
+}
+.shadow {
+  text-shadow: 4px 3px goldenrod;
+}
 
 .background img {
   z-index: -1;
@@ -163,13 +203,23 @@ body{
   color: #e9c318;
   font-style: italic;
 }
+.white {
+  color: white;
+}
 .indent {
   padding: 30px;
 }
 .small {
   font-size: small;
 }
-
+.border {
+  /* grid-row-gap: 40px; */
+  padding: 10px;
+  background-color: rgba(0,0,0,0.3);
+  border-radius: 2px;
+  border: 0.5px solid goldenrod;
+  width: 600px;
+}
 /* .nav-tabs .nav-item {
   margin-bottom: -1px;
 }
