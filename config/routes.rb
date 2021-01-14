@@ -12,6 +12,5 @@ Rails.application.routes.draw do
 
   get '/profile', to: 'users#show'
   get '/logout', to: 'sessions#destroy'
-  get '/test_fxn', to: 'splash#test_fxn'
   get '/show', to: 'splash#show'
 end

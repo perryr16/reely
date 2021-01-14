@@ -1,17 +1,11 @@
 class SplashController < ApplicationController 
 
   def index 
-  end
-
-  def test_fxn
-    @dog = ['dog1', 'dog2', 'dog3']
-    sleep(3)
-    show
-    
+    p '>>>>>>>>>>>>>>>>>> splash controller'
   end
 
   def show 
-    
+    p '>>>>>>>>>>>>>>>>>> splash show'
   end
   
 end
