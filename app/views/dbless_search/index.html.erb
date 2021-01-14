@@ -2,7 +2,7 @@
 <div class="content">
   <% if @data[:movies] %>
     <% if @data[:query] != "Title" %>
-      <h1> <%= @data[:search].titleize %>'s <%=@data[:type].capitalize %> Movies </h1>
+      <h1 class="BlockLetter yellow"> <%= @data[:search].titleize %>'s <%=@data[:type].capitalize %> Movies </h1>
     <% else %>
       <h1> Movie Titles featuring '<%= @data[:search].titleize %>'</h1>
     <% end %>

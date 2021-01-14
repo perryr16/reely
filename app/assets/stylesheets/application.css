@@ -38,6 +38,10 @@
    font-family: 'Credits';
    src: url('CreatorCreditsBB.ttf');
 }
+@font-face {
+   font-family: 'anodina-light';
+   src: url('Anodina-Light.otf');
+}
 
 .BlockLetter {
   font-family: 'BlockLetter';
@@ -94,7 +98,7 @@ body{
   color:white;
   background: black;
   background-image: url("https://i.pinimg.com/originals/d8/21/18/d82118622556ca08f26d20e45856029a.jpg");
-  font-family: helvetica;
+  font-family: 'anodina-light';
 }
 
 .next_button {
@@ -123,7 +127,7 @@ body{
   color: black;
 }
 .main_menu {
-  font-family:"Arial";
+  font-family:"anodina-light";
   /* background-color:black; */
   overflow:hidden;
   height: 40px;
