@@ -220,6 +220,10 @@ body{
   border: 0.5px solid goldenrod;
   width: 600px;
 }
+.med_text {
+  font-size: 25px !important;
+  
+}
 /* .nav-tabs .nav-item {
   margin-bottom: -1px;
 }
