@@ -1,7 +1,11 @@
 <% require 'i18n' %>
 <div class="content">
   <% if @data[:movies] %>
-    <h1> <%= @data[:search].titleize %>'s <%=@data[:type].capitalize %> Movies </h1>
+    <% if @data[:query] != "Title" %>
+      <h1> <%= @data[:search].titleize %>'s <%=@data[:type].capitalize %> Movies </h1>
+    <% else %>
+      <h1> Movie Titles featuring '<%= @data[:search].titleize %>'</h1>
+    <% end %>
     <% @data[:movies][0..50].each do |movie| %>
     <div class="padded">
       <div class="grid-3">
@@ -43,7 +47,7 @@
                 <p>Staring <br>
                 <% if movie[:cast] %>
                   <% movie[:cast].each do |actor| %>
-                    <%= link_to actor, "/dbless_search?search_type=Best&person_type=Actor's&search=#{I18n.transliterate(actor)}", method: :get, class: "actor-link"%> 
+                    <%= link_to actor, "/dbless_spersonsearch_type=Best&person_type=Actor's&search=#{I18n.transliterate(actor)}", method: :get, class: "actor-link"%> 
                     <br>
                   <% end %>
                 <% end %>

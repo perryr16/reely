@@ -46,6 +46,7 @@ class DblessResults
     data_list = get_trailers(data_list)
     data_list = get_omdb_data(data_list)
     movie_list = create_movie_list(data_list)
+    movie_list.sort_by {|m| m[:imdb].to_f}.reverse
   end
 
 
