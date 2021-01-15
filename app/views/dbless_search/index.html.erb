@@ -47,7 +47,7 @@
                 <p>Staring <br>
                 <% if movie[:cast] %>
                   <% movie[:cast].each do |actor| %>
-                    <%= link_to actor, "/dbless_spersonsearch_type=Best&person_type=Actor's&search=#{I18n.transliterate(actor)}", method: :get, class: "actor-link"%> 
+                    <%= link_to actor, "/dbless_personsearch_type=Best&person_type=Actor's&search=#{I18n.transliterate(actor)}", method: :get, class: "actor-link"%> 
                     <br>
                   <% end %>
                 <% end %>
