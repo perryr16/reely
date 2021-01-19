@@ -1,9 +1,8 @@
 class CommentsController < ApplicationController
   def create 
-    binding.pry
   end
 
   def new 
-    movie
+    @movie = Movie.find(params[:movie_id])
   end
 end

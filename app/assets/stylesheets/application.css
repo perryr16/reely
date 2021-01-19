@@ -89,8 +89,17 @@
   display: grid;
   grid-template-columns: 100px 100px;
 }
+.grid {
+  display: grid
+}
+.grid-comment {
+  grid-template-columns: 100px 600px;
+}
 .padded {
   padding-bottom: 10px;
+}
+.pad-left {
+  padding-left: 200px;
 }
 .ratings {
   border-collapse: separate;
@@ -123,6 +132,7 @@ body{
   border: 3px;
   border-radius: 5px;
 }
+
 .left {
   float: left;
 }

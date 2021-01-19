@@ -9,16 +9,9 @@
       <div class="grid-3">
         <div class="">
           <img class="poster" src="<%=movie.poster %>" alt="movie poster">
-          <div class="grid-2-small">
-            <div class="">
               <%= button_to user_movie_path(movie.id), method: :delete, class: "transparent save-movie" do %>
               <i class="fa fa-trash fa-5x"></i>
             <% end %>
-            </div>
-            <div class="<%=movie.id%>-comments">
-              <%= button_to "Comment", new_comment_path(movie.id), method: :get, class: "btn left marged comment-pad" %>
-            </div>
-          </div>
         </div>
         <div class="">
             <h2><%=movie.title %> (<%=movie.year %> <%=movie.rated %>)</h2>
@@ -57,7 +50,20 @@
         <div class="">
             <iframe width="550" height="300" src="https://www.youtube.com/embed/<%=movie.trailer %>" allowfullscreen="allowfulllscreen"></iframe>
         </div>
-
+          <div class="">
+            <%= form_tag(comments_path(movie.id), method: :post) do %>
+              <div class="grid grid-comment pad-left">
+              <div class="">
+              <%= submit_tag 'Comment', id: "comment_button", class: 'btn left marged'%>
+              
+              </div>
+              <div class="">
+              <%= text_area_tag :comment, '', cols: "60", class: "right-50 left"%>
+              
+              </div>
+              </div>
+            <% end %>
+          </div>
       </div>
     </div>
     <% end %>
