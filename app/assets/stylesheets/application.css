@@ -93,7 +93,7 @@
   display: grid
 }
 .grid-comment {
-  grid-template-columns: 100px 600px;
+  grid-template-columns: 100px 600px 100px;
 }
 .padded {
   padding-bottom: 10px;
@@ -130,6 +130,22 @@ body{
   text-decoration:none;
   padding: 11px;
   border: 3px;
+  border-radius: 5px;
+}
+.btn-outline {
+  color:goldenrod;
+  background: transparent;
+  text-decoration:none;
+  padding: 11px;
+  border: 2px white solid;
+  border-radius: 5px;
+}
+.btn-outline:hover {
+  color:teal;
+  background: transparent;
+  text-decoration:none;
+  padding: 11px;
+  border: 2px teal solid;
   border-radius: 5px;
 }
 
@@ -172,6 +188,7 @@ body{
 }
 .actor-link:hover{
   text-decoration: underline;
+  color: teal;
 }
 .oneline {
   white-space: nowrap;
@@ -357,6 +374,14 @@ body{
 }
 .loaded #loader-wrapper {
   visibility: hidden;
+}
+.profile-picture {
+  height: 40px;
+  padding-left: 10px;
+}
+.top-border {
+  border-radius: 2px;
+  border-top: 0.5px solid white;
 }
 
 /* .nav-tabs .nav-item {

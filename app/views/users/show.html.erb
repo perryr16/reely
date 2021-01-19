@@ -54,23 +54,32 @@
           <div class="movie-<%=movie.id%>-comments">
             <% if movie.comments %>
               <% movie.comments.each do |comment| %>
-                <div class="comment-<%=comment.id%>">
-                <%= image_tag @user.photo, class: "profile-picture"%>
-                <p><%=comment.comment %></p>
-                <% end %>
+                <div class="comment-<%=comment.id%> grid grid-comment pad-left">
+                  <div class="profile-picture">
+                    <%= image_tag comment.user.photo, class: "profile-picture"%>
+                  </div>
+                  <div class="top-border">
+                    <p><%=comment.comment %></p>
+                  </div>
+                  <% if comment.user == current_user %>
+                  <div class="actions">
+                    <%= button_to "Delete", comment_path(comment), method: :delete , class: "btn-outline marged"%>
+                  </div>
+                  <% end %>
+                </div>
+              <% end %>
               
-              </div>
             <% end %>
             <%= form_tag(comments_path(movie.id), method: :post) do %>
               <div class="grid grid-comment pad-left">
-              <div class="">
-              <%= submit_tag 'Comment', id: "comment_button", class: 'btn left marged'%>
-              
-              </div>
-              <div class="">
-              <%= text_area_tag :comment, '', cols: "60", class: "right-50 left"%>
-              
-              </div>
+                <div class="">
+                <%= submit_tag 'Comment', id: "comment_button", class: 'btn-outline left marged'%>
+                
+                </div>
+                <div class="">
+                <%= text_area_tag :comment, '', cols: "60", class: "right-50 left"%>
+                
+                </div>
               </div>
             <% end %>
           </div>

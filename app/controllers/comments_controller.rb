@@ -14,4 +14,9 @@ class CommentsController < ApplicationController
   def new 
     @movie = Movie.find(params[:movie_id])
   end
+
+  def destroy
+    Comment.destroy(params[:id])
+    redirect_back(fallback_location: '/profile')
+  end
 end

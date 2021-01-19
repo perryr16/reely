@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :movie_search, only: [:create, :index]
   resources :dbless_search, only: [:create, :index]
   resources :user_movies, only: [:create, :index, :destroy]
-  resources :comments, only: [:create]
+  resources :comments, only: [:create, :destroy]
 
   get '/movies/:movie_id/comments', to: 'comments#new'
 
