@@ -7,6 +7,7 @@ class Movie < ApplicationRecord
   has_many :directors, through: :movie_directors
   has_many :user_movies
   has_many :users, through: :user_movies
+  has_many :comments
 
   def director_list
     directors.map(&:name).uniq.join(', ')

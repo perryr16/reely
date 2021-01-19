@@ -10,7 +10,6 @@ describe 'movie search by title' do
       click_button "Search"
     end
     expect(current_path).to eq("/dbless_search")
-    save_and_open_page 
    end
 
 end
