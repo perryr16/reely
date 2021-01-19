@@ -1,13 +1,13 @@
 FactoryBot.define do
   factory :movie do
-    title { "MyString" }
+    title { "Movie Title" }
     year { 1 }
     rating { 1.5 }
-    imdb { "MyString" }
-    rotten { "MyString" }
-    metacritic { "MyString" }
-    trailer { "MyString" }
-    poster { "MyString" }
-    description { "MyString" }
+    imdb { "9" }
+    rotten { "90" }
+    metacritic { "88" }
+    trailer { "www.trailer.com" }
+    poster { "www.poster.com" }
+    description { "it's a movie" }
   end
 end
