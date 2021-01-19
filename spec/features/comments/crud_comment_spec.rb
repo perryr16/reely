@@ -27,15 +27,16 @@ describe 'CRUD functionality on comments' do
     expect(page).to have_content("Logged in as #{@user.name}")
     expect(current_path).to eq profile_path
     expect(User.count).to eq(1)
-    
-
-
   end
 
   it "passes test" do 
-    visit '/'
+    visit '/profile'
     expect(@movie.title).to eq('Movie Title')
     expect(@movie.users[0].name).to eq('MyString')
     expect(@user.movies[0].title).to eq('Movie Title')
+
+    within(".#{@movie.id}-comments") do 
+      click_link "Comment"
+    end
   end
 end

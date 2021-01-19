@@ -82,6 +82,13 @@
   display: grid;
   grid-template-columns: 200px 200px;
 }
+.comment-pad {
+  margin-top: 15px;
+}
+.grid-2-small {
+  display: grid;
+  grid-template-columns: 100px 100px;
+}
 .padded {
   padding-bottom: 10px;
 }

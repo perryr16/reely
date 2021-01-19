@@ -1,20 +1,24 @@
-<div class="content">
-
-
-<h1><%= @user.name %></h1>
-<h3><%= @user.email %></h3>
 <% require 'i18n' %>
 <div class="content">
+<h1><%= @user.name %></h1>
+<h3><%= @user.email %></h3>
   <% if @user.movies %>
     <h2>Saved Movies</h2>
     <% @user.movies.each do |movie| %>
     <div class="padded">
       <div class="grid-3">
         <div class="">
-            <img class="poster" src="<%=movie.poster %>" alt="movie poster">
-             <%= button_to user_movie_path(movie.id), method: :delete, class: "transparent save-movie" do %>
+          <img class="poster" src="<%=movie.poster %>" alt="movie poster">
+          <div class="grid-2-small">
+            <div class="">
+              <%= button_to user_movie_path(movie.id), method: :delete, class: "transparent save-movie" do %>
               <i class="fa fa-trash fa-5x"></i>
             <% end %>
+            </div>
+            <div class="<%=movie.id%>-comments">
+              <%= button_to "Comment", new_comment_path(movie.id), method: :get, class: "btn left marged comment-pad" %>
+            </div>
+          </div>
         </div>
         <div class="">
             <h2><%=movie.title %> (<%=movie.year %> <%=movie.rated %>)</h2>
@@ -53,11 +57,11 @@
         <div class="">
             <iframe width="550" height="300" src="https://www.youtube.com/embed/<%=movie.trailer %>" allowfullscreen="allowfulllscreen"></iframe>
         </div>
+
       </div>
     </div>
     <% end %>
   <% else %>
     <p>No Search Results Found</p>
   <%end %>
-</div>
 </div>
