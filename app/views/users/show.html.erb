@@ -50,7 +50,17 @@
         <div class="">
             <iframe width="550" height="300" src="https://www.youtube.com/embed/<%=movie.trailer %>" allowfullscreen="allowfulllscreen"></iframe>
         </div>
-          <div class="">
+
+          <div class="movie-<%=movie.id%>-comments">
+            <% if movie.comments %>
+              <% movie.comments.each do |comment| %>
+                <div class="comment-<%=comment.id%>">
+                <%= image_tag @user.photo, class: "profile-picture"%>
+                <p><%=comment.comment %></p>
+                <% end %>
+              
+              </div>
+            <% end %>
             <%= form_tag(comments_path(movie.id), method: :post) do %>
               <div class="grid grid-comment pad-left">
               <div class="">
