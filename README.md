@@ -40,8 +40,7 @@ The test suite is run using RSpec and Capybara. The test results have been mocke
 `bundle exec rspec`
 
 
-
-# Schema
+## Schema
 
 Movies
 - have many actors
