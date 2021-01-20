@@ -72,13 +72,11 @@
             <% end %>
             <%= form_tag(comments_path(movie.id), method: :post) do %>
               <div class="grid grid-comment pad-left">
-                <div class="">
-                <%= submit_tag 'Comment', id: "comment_button", class: 'btn-outline left marged'%>
-                
+                <div class="movie-<%=movie.id%>-new-comment-submit">
+                  <%= submit_tag 'Comment', id: "comment_button", class: 'btn-outline left marged'%>
                 </div>
-                <div class="">
-                <%= text_area_tag :comment, '', cols: "60", class: "right-50 left"%>
-                
+                <div class="movie-<%=movie.id%>-new-comment-content">
+                  <%= text_area_tag :comment, '', cols: "60", class: "right-50 left"%>
                 </div>
               </div>
             <% end %>
