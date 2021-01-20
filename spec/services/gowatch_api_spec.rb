@@ -5,13 +5,11 @@ describe 'GoWatch service returns steaming data for a movie' do
     service = GoWatchService.new
     fight_club_id = "tt0137523"
     results = service.get_streaming_data(fight_club_id)
-    binding.pry
-    # expect(results[:Year]).to be_truthy
-    # expect(results[:Rated]).to be_truthy
-    # expect(results[:Genre]).to be_truthy
-    # expect(results[:Actors]).to be_truthy
-    # expect(results[:Director]).to be_truthy
-    # expect(results[:Ratings].length).to eq(3)
+    expect(results[:name]).to be_truthy
+    expect(results[:offers]).to be_truthy
+    expect(results[:offers][0][:provider]).to be_truthy
+    expect(results[:offers][0][:price]).to be_truthy
+    expect(results[:offers][0][:url]).to be_truthy
   end
   
 end
