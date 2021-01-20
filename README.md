@@ -10,6 +10,7 @@ Users can create a profile where they can save movies to be watched. After watch
 
 # Getting Started
 * Ruby Version 2.5.3
+* Rails Version 6.03.3
 
 # Schema
 
