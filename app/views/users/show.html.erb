@@ -1,18 +1,15 @@
-<div class="content">
-
-
-<h1><%= @user.name %></h1>
-<h3><%= @user.email %></h3>
 <% require 'i18n' %>
 <div class="content">
+<h1><%= @user.name %></h1>
+<h3><%= @user.email %></h3>
   <% if @user.movies %>
     <h2>Saved Movies</h2>
     <% @user.movies.each do |movie| %>
     <div class="padded">
       <div class="grid-3">
         <div class="">
-            <img class="poster" src="<%=movie.poster %>" alt="movie poster">
-             <%= button_to user_movie_path(movie.id), method: :delete, class: "transparent save-movie" do %>
+          <img class="poster" src="<%=movie.poster %>" alt="movie poster">
+              <%= button_to user_movie_path(movie.id), method: :delete, class: "transparent save-movie" do %>
               <i class="fa fa-trash fa-5x"></i>
             <% end %>
         </div>
@@ -53,11 +50,43 @@
         <div class="">
             <iframe width="550" height="300" src="https://www.youtube.com/embed/<%=movie.trailer %>" allowfullscreen="allowfulllscreen"></iframe>
         </div>
+
+          <div class="movie-<%=movie.id%>-comments">
+            <% if movie.comments %>
+              <% movie.comments.each do |comment| %>
+                <div class="comment-<%=comment.id%> grid grid-comment pad-left">
+                  <div class="profile-picture">
+                    <%= image_tag comment.user.photo, class: "profile-picture"%>
+                  </div>
+                  <div class="top-border">
+                    <p><%=comment.comment %></p>
+                  </div>
+                  <% if comment.user == current_user %>
+                  <div class="actions">
+                    <%= button_to "Delete", comment_path(comment), method: :delete , class: "btn-outline marged"%>
+                  </div>
+                  <% end %>
+                </div>
+              <% end %>
+              
+            <% end %>
+            <%= form_tag(comments_path(movie.id), method: :post) do %>
+              <div class="grid grid-comment pad-left">
+                <div class="">
+                <%= submit_tag 'Comment', id: "comment_button", class: 'btn-outline left marged'%>
+                
+                </div>
+                <div class="">
+                <%= text_area_tag :comment, '', cols: "60", class: "right-50 left"%>
+                
+                </div>
+              </div>
+            <% end %>
+          </div>
       </div>
     </div>
     <% end %>
   <% else %>
     <p>No Search Results Found</p>
   <%end %>
-</div>
 </div>

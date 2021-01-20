@@ -14,19 +14,21 @@ class DblessResults
   def best_directed(director)
     all_directed(director).sort_by {|m| m[:imdb].to_f}.reverse
   end
+
+  def worst_directed(director)
+    worst = all_directed(director).sort_by {|m| m[:imdb].to_f}
+    filterd = worst.find_all {|movie| !movie[:imdb].nil?} 
+  end
   
   def all_acted(actor)
     data_list = @tmdb.get_all_by_actor(actor)
+    binding.pry
     return if !data_list
     data_list = get_trailers(data_list)
     data_list = get_omdb_data(data_list)
     movie_list = create_movie_list(data_list)
   end
 
-  def worst_directed(director)
-    worst = all_directed(director).sort_by {|m| m[:imdb].to_f}
-    filterd = worst.find_all {|movie| !movie[:imdb].nil?} 
-  end
 
   def worst_acted(actor)
     all =  all_acted(actor)
@@ -117,6 +119,7 @@ class DblessResults
     return data[:cast].split(', ') if data[:cast]
     nil
   end
+
   def add_director(data)
     return data[:director].split(', ') if data[:director]
     nil
