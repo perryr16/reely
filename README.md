@@ -8,9 +8,38 @@ Results include which popular streaming sites (Netflix, HBO, Amazon...) have acc
 
 Users can create a profile where they can save movies to be watched. After watching users can remove the films from their saved profile. Users also have the ability to comment on films.
 
-# Getting Started
+# Software Requirements
 * Ruby Version 2.5.3
 * Rails Version 6.03.3
+
+# Getting Started 
+If you want to create your own Reely and make any additional improvements or add extenstions. Follow these steps.
+
+```
+git clone git@github.com:perryr16/reely.git
+```
+
+Once the repository has been downloaded to your local machine. Run the following commands:
+
+```
+bundle install
+rails db:create
+rails db:migrate
+```
+
+# Running Locally
+To start a local server enter the following command 
+`rails s`
+navigate to `localhost:3000` in your browser to see the app running locally
+
+# Running Tests
+The test suite is run using RSpec and Capybara. The test results have been mocked and stubbed using Webmock and VCR. To run all tests simply enter the following commands.
+
+`rails g rspec:install`
+`bundle exec rake db:create` (if you have not run the commands in getting started)
+`bundle exec rspec`
+
+
 
 # Schema
 
