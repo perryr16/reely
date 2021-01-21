@@ -5,16 +5,17 @@
   <% if @user.movies %>
     <h2>Saved Movies</h2>
     <% @user.movies.each do |movie| %>
+
     <div class="padded">
       <div class="grid-3">
-        <div class="">
+        <div class="underline">
           <img class="poster" src="<%=movie.poster %>" alt="movie poster">
               <%= button_to user_movie_path(movie.id), method: :delete, class: "transparent save-movie" do %>
               <i class="fa fa-trash fa-5x"></i>
             <% end %>
         </div>
-        <div class="">
-            <h2><%=movie.title %> (<%=movie.year %> <%=movie.rated %>)</h2>
+        <div class="underline">
+            <h2><a href="/movies/<%=movie.id%>/streaming", class="link-title"><%=movie.title%> (<%=movie.year %> <%=movie.rated %>)</a></h2>
             <p><%=movie.genre %></p>
             <table class="ratings">
               <tr>
@@ -37,7 +38,7 @@
                 <% end %>
                 </p>
               </div>
-              <div class="">
+              <div class="top">
                 <p>Directed by <br>
                 <% movie.directors.each do |director| %>
                   <%= link_to director.name, "/dbless_search?search_type=Best&person_type=Director's&search=#{I18n.transliterate(director.name)}", class: "actor-link"%> 
@@ -47,10 +48,9 @@
             </div>
             <p class="ital"><%=movie.description %></p>
         </div>
-        <div class="">
+        <div class="underline">
             <iframe width="550" height="300" src="https://www.youtube.com/embed/<%=movie.trailer %>" allowfullscreen="allowfulllscreen"></iframe>
         </div>
-
           <div class="movie-<%=movie.id%>-comments">
             <% if movie.comments %>
               <% movie.comments.each do |comment| %>
