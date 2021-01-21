@@ -78,6 +78,13 @@
   border-radius: 2px;
   border: 0.5px solid goldenrod;
 }
+.border {
+  padding: 10px;
+  background-color: rgba(0,0,0,0.3);
+  border-radius: 2px;
+  border: 0.5px solid goldenrod;
+  margin-right: 5vw;
+}
 .grid-2 {
   display: grid;
   grid-template-columns: 200px 200px;
@@ -272,10 +279,14 @@ body{
   color: white;
 }
 .indent {
-  padding: 30px;
+  padding-left: 30px;
 }
 .small {
   font-size: small;
+}
+.stream-table {
+  border-collapse: separate;
+  border-spacing: 50px 0;
 }
 .border {
   /* grid-row-gap: 40px; */
@@ -283,7 +294,9 @@ body{
   background-color: rgba(0,0,0,0.3);
   border-radius: 2px;
   border: 0.5px solid goldenrod;
-  width: 600px;
+  margin-right: 1px;
+  position:relative;
+  height: auto;
 }
 .underline {
   border-bottom: 0.5px solid rgb(71, 59, 8);
