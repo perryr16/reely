@@ -80,25 +80,23 @@
       <div class="streaming-options border content">
       <h2 class="indent">Streaming Options</h2>
         <table class=stream-table>
+          <% if @streaming_data %>
           <tr>
             <th>Provider</th>
             <th>Price</th>
             <th>Link</th>
           </tr>
-          <tr class="yellow">
-            <th>Youtube</th>
-            <th>3.99</th>
-            <th>www.youtube.com</th>
-          </tr>
-          <% if @streaming_data %>
             <% @streaming_data.each do |stream| %>
-          <tr>
+          <tr class="yellow">
               <td><%=stream[:provider] %></td>
               <td><%=stream[:price] %></td>
               <td><a href="<%=stream[:url]%>"><%=stream[:url] %></a></td>
           </tr>
             <% end %>
+          <% else %>
+            <p class="yellow">Streaming Data is not available at this time</p>
           <% end %>
+
         </table>
       
       </div>
