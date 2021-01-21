@@ -1,5 +1,5 @@
 class StreamingController < ApplicationController
   def index
-    binding.pry
+    @movie = Movie.find(params[:movie_id])
   end
 end

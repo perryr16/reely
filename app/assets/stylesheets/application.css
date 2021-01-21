@@ -96,7 +96,7 @@
 .grid {
   display: grid
 }
-.grid-comment {
+.grid-3-comment {
   grid-template-columns: 100px 600px 100px;
 }
 .padded {
@@ -155,6 +155,7 @@ body{
 
 .left {
   float: left;
+  margin-left: 5px;
 }
 .right {
   float: right;
@@ -233,7 +234,18 @@ body{
   float: left;
   text-decoration: none;
 }
-
+.comment-content {
+  background: rgba(88, 87, 87, 0.425);
+}
+.marg-5 {
+  margin: 5px;
+}
+.pad-top-5 {
+  padding-top: 5px;
+}
+.pad-right-5 {
+  margin-right: 5px;
+}
 .user-message {
   margin-top:1px;
   margin-bottom: 1px;
