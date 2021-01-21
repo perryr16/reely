@@ -3,6 +3,6 @@ FactoryBot.define do
     name { "MyString" }
     google_token { "MyString" }
     google_refresh_token { "MyString" }
-    photo { "MyString" }
+    photo { "https://servniagara.org/wp-content/uploads/2018/04/profile-anonymous.jpg" }
   end
 end

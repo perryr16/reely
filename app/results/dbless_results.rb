@@ -22,7 +22,6 @@ class DblessResults
   
   def all_acted(actor)
     data_list = @tmdb.get_all_by_actor(actor)
-    binding.pry
     return if !data_list
     data_list = get_trailers(data_list)
     data_list = get_omdb_data(data_list)

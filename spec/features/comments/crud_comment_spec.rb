@@ -29,14 +29,28 @@ describe 'CRUD functionality on comments' do
     expect(User.count).to eq(1)
   end
 
-  it "passes test" do 
+  it "Posts and deltes a comment" do 
     visit '/profile'
     expect(@movie.title).to eq('Movie Title')
     expect(@movie.users[0].name).to eq('MyString')
     expect(@user.movies[0].title).to eq('Movie Title')
-
-    within(".#{@movie.id}-comments") do 
-      click_link "Comment"
+    within(".movie-#{@movie.id}-new-comment-content") do 
+        fill_in :comment, with: "Test Comment"
     end
+    within(".movie-#{@movie.id}-new-comment-submit") do 
+        click_button "Comment"
+    end
+
+    expect(current_path).to eq('/profile')
+    expect(page).to have_content("Test Comment")
+
+    within(".movie-#{@movie.id}-comments") do
+      within(".actions") do 
+        click_button "Delete"
+      end
+    end
+
+    expect(current_path).to eq('/profile')
+    expect(page).to_not have_content("Test Comment")
   end
 end

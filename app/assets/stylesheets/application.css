@@ -78,9 +78,20 @@
   border-radius: 2px;
   border: 0.5px solid goldenrod;
 }
+.border {
+  padding: 10px;
+  background-color: rgba(0,0,0,0.3);
+  border-radius: 2px;
+  border: 0.5px solid goldenrod;
+  margin-right: 5vw;
+}
 .grid-2 {
   display: grid;
   grid-template-columns: 200px 200px;
+}
+.top {
+  position:relative;
+  margin-top: 0px;
 }
 .comment-pad {
   margin-top: 15px;
@@ -92,7 +103,7 @@
 .grid {
   display: grid
 }
-.grid-comment {
+.grid-3-comment {
   grid-template-columns: 100px 600px 100px;
 }
 .padded {
@@ -151,6 +162,7 @@ body{
 
 .left {
   float: left;
+  margin-left: 5px;
 }
 .right {
   float: right;
@@ -185,6 +197,10 @@ body{
   /* font-weight:bold; */
   text-decoration: none;
 }
+.no-decoration {
+  text-decoration: none;
+  color: goldenrod
+}
 .actor-link:hover{
   text-decoration: underline;
   color: teal;
@@ -211,6 +227,12 @@ body{
   background-color: teal;
   color: black;
 }
+.link-title {
+  color: goldenrod;
+}
+.link-title:hover {
+  color: teal;
+}
 .menu-button {
   float: left;
 }
@@ -218,6 +240,18 @@ body{
   position: relative;
   float: left;
   text-decoration: none;
+}
+.comment-content {
+  background: rgba(88, 87, 87, 0.425);
+}
+.marg-5 {
+  margin: 5px;
+}
+.pad-top-5 {
+  padding-top: 5px;
+}
+.pad-right-5 {
+  margin-right: 5px;
 }
 .user-message {
   margin-top:1px;
@@ -233,6 +267,7 @@ body{
   border:none;
   color: white;
 }
+
 .transparent:hover {
     color: #e9c318;
   }
@@ -244,10 +279,14 @@ body{
   color: white;
 }
 .indent {
-  padding: 30px;
+  padding-left: 30px;
 }
 .small {
   font-size: small;
+}
+.stream-table {
+  border-collapse: separate;
+  border-spacing: 50px 0;
 }
 .border {
   /* grid-row-gap: 40px; */
@@ -255,7 +294,13 @@ body{
   background-color: rgba(0,0,0,0.3);
   border-radius: 2px;
   border: 0.5px solid goldenrod;
-  width: 600px;
+  margin-right: 1px;
+  position:relative;
+  height: auto;
+}
+.underline {
+  border-bottom: 0.5px solid rgb(71, 59, 8);
+  margin-bottom: 10px;
 }
 .med_text {
   font-size: 25px !important;
