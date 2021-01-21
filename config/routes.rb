@@ -9,6 +9,12 @@ Rails.application.routes.draw do
   resources :user_movies, only: [:create, :index, :destroy]
   resources :comments, only: [:create, :destroy]
 
+  resources :movies do 
+    resources :streaming, only: [:index]
+  end
+
+  # get '/movies/:id/streaming', to: 'streaming#show'
+
   get '/movies/:movie_id/comments', to: 'comments#new'
 
   get 'auth/:provider/callback', to: 'sessions#create'
