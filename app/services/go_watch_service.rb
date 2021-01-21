@@ -12,8 +12,8 @@ class GoWatchService
   def conn 
     Faraday.new('https://gowatch.p.rapidapi.com') do |res|
       res.headers["x-rapidapi-key"] = ENV['GOWATCH_KEY']
-      res.headers["x-rapidapi-host"] = "gowatch.p.rapidapi.com"
-      res.headers["Content-Type"] = "application/x-www-form-urlencoded"
+      # res.headers["x-rapidapi-host"] = "gowatch.p.rapidapi.com"
+      # res.headers["Content-Type"] = "application/x-www-form-urlencoded"
     end
   end
   
