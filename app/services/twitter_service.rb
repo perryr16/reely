@@ -10,7 +10,7 @@ class TwitterService
   end
   
   
-  
+  private
   def conn 
     Faraday.new('https://api.twitter.com') do |req|
       req.authorization :Bearer, ENV['TWITTER_BEARER']
