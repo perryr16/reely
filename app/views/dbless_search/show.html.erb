@@ -1,0 +1,104 @@
+<% require 'i18n' %>
+<div class="content">
+    <div class="padded">
+      <div class="grid-3">
+        <div class="underline">
+          <img class="poster" src="<%=@movie.poster %>" alt="movie poster">
+              <%= button_to user_movie_path(@movie.id), method: :delete, class: "transparent save-movie" do %>
+              <i class="fa fa-trash fa-5x"></i>
+            <% end %>
+        </div>
+        <div class="underline">
+            <h2><%=@movie.title%> (<%=@movie.year %> <%=@movie.rated %>)</h2>
+            <p><%=@movie.genre %></p>
+            <table class="ratings">
+              <tr>
+                <th>IMDB</th>
+                <th>Rotten</th>
+                <th>Meta</th>
+              </tr>
+              <tr>
+                <td><%=@movie.imdb %></td>
+                <td><%=@movie.rotten %></td>
+                <td><%=@movie.metacritic %></td>
+              </tr>
+            </table>
+            <div class="grid-2">
+              <div class="">
+                <p>Staring <br>
+                <% @movie.actors.each do |actor| %>
+                  <%= link_to actor.name, "/dbless_search?search_type=Best&person_type=Actor's&search=#{I18n.transliterate(actor.name)}", class: "actor-link"%> 
+                  <br>
+                <% end %>
+                </p>
+              </div>
+              <div class="top">
+                <p>Directed by <br>
+                <% @movie.directors.each do |director| %>
+                  <%= link_to director.name, "/dbless_search?search_type=Best&person_type=Director's&search=#{I18n.transliterate(director.name)}", class: "actor-link"%> 
+                <% end %>
+                </p>
+              </div>
+            </div>
+            <p class="ital"><%=@movie.description %></p>
+        </div>
+        <div class="underline">
+            <iframe width="550" height="300" src="https://www.youtube.com/embed/<%=@movie.trailer %>" allowfullscreen="allowfulllscreen"></iframe>
+        </div>
+        <div class="movie-<%=@movie.id%>-comments">
+          <% if @movie.comments %>
+            <% @movie.comments.each do |comment| %>
+              <div class="comment-<%=comment.id%> grid grid-3-comment pad-left">
+                <div class="profile-picture pad-top-5">
+                  <%= image_tag comment.user.photo, class: "profile-picture"%>
+                </div>
+                <div class="comment-content marg-5">
+                  <p><%=comment.comment %></p>
+                </div>
+                <% if comment.user == current_user %>
+                <div class="actions marg-5">
+                  <%= button_to "Delete", comment_path(comment), method: :delete , class: "btn-outline marged"%>
+                </div>
+                <% end %>
+              </div>
+            <% end %>
+            
+          <% end %>
+          <%= form_tag(comments_path(@movie.id), method: :post) do %>
+            <div class="grid grid-3-comment pad-left">
+              <div class="movie-<%=@movie.id%>-new-comment-submit">
+                <%= submit_tag 'Comment', id: "comment_button", class: 'btn-outline left marged'%>
+              </div>
+              <div class="movie-<%=@movie.id%>-new-comment-content pad-right-5">
+                <%= text_area_tag :comment, '', cols: "60", class: "right-50 left"%>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <br>
+      <div class="streaming-options border content">
+      <h2 class="indent">Streaming Options</h2>
+        <table class=stream-table>
+          <% if @streaming_data %>
+          <tr>
+            <th>Provider</th>
+            <th>Price</th>
+            <th>Link</th>
+          </tr>
+            <% @streaming_data.each do |stream| %>
+          <tr class="yellow">
+              <td><%=stream[:provider] %></td>
+              <td><%=stream[:price] %></td>
+              <td><a href="<%=stream[:url]%>"><%=stream[:url] %></a></td>
+          </tr>
+            <% end %>
+          <% else %>
+            <p class="yellow">Streaming Data is not available at this time</p>
+          <% end %>
+
+        </table>
+      
+      </div>
+
+    </div>
