@@ -5,6 +5,11 @@ describe 'hit the movie database api' do
     @service = TwitterService.new
   end
 
+  it 'returns tweets by query' do 
+    @service.get_tweets("True Romance")
+    
+  end
+
   # it 'returns an actor id' do 
   #   # brad_json = @service.get_actor_id
   #   brad_id = @service.get_actor_id('brad pitt')
