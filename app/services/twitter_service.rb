@@ -4,11 +4,8 @@ class TwitterService
     response = conn.get('/2/tweets/search/recent') do |req|
       req.params["query"] = query
     end
-    x = JSON.parse(response.body, symbolize_names: true)
-    binding.pry
-    
+    JSON.parse(response.body, symbolize_names: true)
   end
-  
   
   private
   def conn 

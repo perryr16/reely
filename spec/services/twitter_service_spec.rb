@@ -6,8 +6,9 @@ describe 'hit the movie database api' do
   end
 
   it 'returns tweets by query' do 
-    @service.get_tweets("True Romance")
-    
+    x = @service.get_tweets("True Romance")
+    binding.pry
+
   end
 
   # it 'returns an actor id' do 
