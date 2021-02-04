@@ -6,10 +6,10 @@ class Tweet < ApplicationRecord
     tweet_data = TwitterService.new.get_tweets(movie.title + " movie")
     TwitterUser.create_twitter_users(tweet_data[:includes][:users])
     tweets = tweet_data[:data]
-    Tweets.create_tweets(tweets)
+    Tweet.create_tweets(tweets, movie)
   end
 
-  def self.create_tweets(tweets_data)
+  def self.create_tweets(tweets_data, movie)
     tweets_data.each do |tweet|
       twitter_user = TwitterUser.find_by(author_id: tweet[:author_id])
       Tweet.create(

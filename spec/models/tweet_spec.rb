@@ -25,7 +25,7 @@ RSpec.describe Tweet, type: :model do
     Tweet.get_tweets_about(movie)
 
     expect(Tweet.all.length).to eq(10)
-    expect(TwitterUser.all.length).to eq(10)
+    expect(TwitterUser.all.length > 0).to eq(true)
     expect(movie.tweets.length).to eq(10)
     expect(TwitterUser.first.tweets).to be_truthy
 
