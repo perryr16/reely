@@ -29,4 +29,12 @@ class Movie < ApplicationRecord
       end
     end
   end
+
+  def self.get_movie_and_tweets(movie_id)
+    movie = Movie.find(movie_id)
+    if movie.tweets.empty?
+      Tweets.get_tweets_about(movie.title)
+      
+    binding.pry 
+  end
 end

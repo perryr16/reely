@@ -14,7 +14,7 @@
             <% end %>
         </div>
         <div class="underline">
-            <h2><a href="/movies/<%=movie.id%>/streaming", class="link-title"><%=movie.title%> (<%=movie.year %> <%=movie.rated %>)</a></h2>
+            <h2><a href="<%=movie_path(movie.id)%>", class="link-title"><%=movie.title%> (<%=movie.year %> <%=movie.rated %>)</a></h2>
             <p><%=movie.genre %></p>
             <table class="ratings">
               <tr>

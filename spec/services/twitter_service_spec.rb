@@ -6,7 +6,7 @@ describe 'hit the movie database api' do
   end
 
   it 'returns tweets by query' do 
-    
+
     body = @service.get_tweets("True Romance")
     expect(body[:data]).to be_truthy
     expect(body[:data].length).to eq(10)
@@ -16,8 +16,6 @@ describe 'hit the movie database api' do
     expect(tweets[0][:text]).to be_truthy
     expect(tweets[-1][:id]).to be_truthy
     expect(tweets[-1][:text]).to be_truthy
-    binding.pry
-
   end
 
   # it 'returns an actor id' do 

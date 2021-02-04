@@ -7,7 +7,6 @@ class TwitterService
       req.params['user.fields'] = 'name,username,profile_image_url'
     end
     x = JSON.parse(response.body, symbolize_names: true)
-    binding.pry
   end
   
   private
