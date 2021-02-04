@@ -1,3 +1,4 @@
 class TwitterUser < ApplicationRecord
-    has_many :tweets
+  validate_uniqueness_of :username
+  has_many :tweets
 end

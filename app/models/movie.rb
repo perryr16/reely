@@ -33,8 +33,8 @@ class Movie < ApplicationRecord
   def self.get_movie_and_tweets(movie_id)
     movie = Movie.find(movie_id)
     if movie.tweets.empty?
-      Tweets.get_tweets_about(movie.title)
-      
-    binding.pry 
+      x = Tweet.get_tweets_about(movie.title)
+    end
+
   end
 end
