@@ -2,20 +2,22 @@ class Tweet < ApplicationRecord
   belongs_to :twitter_user
   belongs_to :movie
 
-  def self.get_tweets_about(movie_title)
-    tweet_data = TwitterService.new.get_tweets(movie_title + " movie")
+  def self.get_tweets_about(movie)
+    tweet_data = TwitterService.new.get_tweets(movie.title + " movie")
+    TwitterUser.create_twitter_users(tweet_data[:includes][:users])
     tweets = tweet_data[:data]
-    twitter_user_data = tweet_data[:includes][:users]
-    # tweets.each do |tweet|
-    #   Tweet.create(
+    Tweets.create_tweets(tweets)
+  end
 
-    #   )
-    #       Comment.create(
-    #   comment: params[:comment],
-    #   image_url: current_user.photo,
-    #   user_id: current_user.id,
-    #   movie_id: params[:format]
-    # )
-    # end
+  def self.create_tweets(tweets_data)
+    tweets_data.each do |tweet|
+      twitter_user = TwitterUser.find_by(author_id: tweet[:author_id])
+      Tweet.create(
+        text: tweet[:text],
+        tweet_id: tweet[:id],
+        twitter_user: twitter_user,
+        movie: movie,
+      )
+    end
   end
 end
