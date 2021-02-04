@@ -128,7 +128,7 @@ body{
   color:white;
   background: black;
   background-image: url("https://i.pinimg.com/originals/d8/21/18/d82118622556ca08f26d20e45856029a.jpg");
-  font-family: 'anodina-light';
+  /* font-family: 'anodina-light'; */
 }
 
 .next_button {
