@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_19_182744) do
+ActiveRecord::Schema.define(version: 2021_02_04_182521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,27 @@ ActiveRecord::Schema.define(version: 2021_01_19_182744) do
     t.string "genre"
   end
 
+  create_table "tweets", force: :cascade do |t|
+    t.string "tweet_id"
+    t.string "text"
+    t.bigint "twitter_user_id", null: false
+    t.bigint "movie_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["movie_id"], name: "index_tweets_on_movie_id"
+    t.index ["twitter_user_id"], name: "index_tweets_on_twitter_user_id"
+  end
+
+  create_table "twitter_users", force: :cascade do |t|
+    t.string "name"
+    t.string "username"
+    t.string "profile_image_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "author_id"
+    t.index ["username"], name: "index_twitter_users_on_username", unique: true
+  end
+
   create_table "user_movies", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "movie_id", null: false
@@ -92,6 +113,8 @@ ActiveRecord::Schema.define(version: 2021_01_19_182744) do
   add_foreign_key "movie_actors", "movies"
   add_foreign_key "movie_directors", "directors"
   add_foreign_key "movie_directors", "movies"
+  add_foreign_key "tweets", "movies"
+  add_foreign_key "tweets", "twitter_users"
   add_foreign_key "user_movies", "movies"
   add_foreign_key "user_movies", "users"
 end

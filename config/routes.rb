@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :destroy]
 
   resources :movies do 
-    resources :streaming, only: [:index]
+    resources :streaming, only: [:index, :show]
   end
 
   # get '/movies/:id/streaming', to: 'streaming#show'

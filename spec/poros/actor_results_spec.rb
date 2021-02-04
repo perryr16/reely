@@ -34,7 +34,7 @@ describe "Create movie objects from API call" do
     expect(movie2.poster).to be_truthy
     expect(movie2.description).to be_truthy
     expect(movie2.imdb_id).to be_truthy
-    expect(movie2.trailer).to be_truthy
+    # expect(movie2.trailer).to be_truthy
     expect(movie2.rated).to be_truthy
     expect(movie2.genre).to be_truthy
     expect(movie2.imdb).to be_truthy
@@ -71,7 +71,7 @@ describe "Create movie objects from API call" do
     expect(movie2.poster).to be_truthy
     expect(movie2.description).to be_truthy
     expect(movie2.imdb_id).to be_truthy
-    expect(movie2.trailer).to be_truthy
+    # expect(movie2.trailer).to be_truthy
     expect(movie2.rated).to be_truthy
     expect(movie2.genre).to be_truthy
     expect(movie2.imdb).to be_truthy

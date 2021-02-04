@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Streaming Data" do 
+xdescribe "Streaming Data" do 
   it "profile movies show has details" do 
     @user = create(:user)
     @movie = create(:movie, imdb_id: "tt0137523")

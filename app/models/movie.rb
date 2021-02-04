@@ -8,6 +8,7 @@ class Movie < ApplicationRecord
   has_many :user_movies
   has_many :users, through: :user_movies
   has_many :comments
+  has_many :tweets
 
   def director_list
     directors.map(&:name).uniq.join(', ')
@@ -27,5 +28,13 @@ class Movie < ApplicationRecord
         self.directors << Director.create(name: director)
       end
     end
+  end
+
+  def self.get_movie_and_tweets(movie_id)
+    movie = Movie.find(movie_id)
+    if movie.tweets.empty?
+      Tweet.get_tweets_about(movie)
+    end
+    movie
   end
 end
