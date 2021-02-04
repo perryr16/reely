@@ -14,7 +14,7 @@
  *= require_self
  *= require font-awesome
  */
- @font-face {
+ /* @font-face {
    font-family: 'BlockLetter';
    src: font-url('Blockletter.otf');
  }
@@ -41,7 +41,7 @@
 @font-face {
    font-family: 'anodina-light';
    src: font-url('Anodina-Light.otf');
-}
+} */
 
 /* .BlockLetter {
   font-family: 'Arial';
