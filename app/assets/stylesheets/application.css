@@ -14,36 +14,36 @@
  *= require_self
  *= require font-awesome
  */
- /* @font-face {
+ @font-face {
    font-family: 'BlockLetter';
-   src: url('Blockletter.otf');
+   src: font-url('Blockletter.otf');
  }
 @font-face {
   font-family: 'DeathStar';
-  src: url('Death\ Star.otf');
+  src: font-url('Death\ Star.otf');
 }
 @font-face {
    font-family: 'DurangoWestern';
-   src: url('Durango\ Western\ Eroded\ Demo.otf');
+   src: font-url('Durango\ Western\ Eroded\ Demo.otf');
 }
 @font-face {
    font-family: 'MovieFilmStrip';
-   src: url('Movie\ Filmstrip.ttf');
+   src: font-url('Movie\ Filmstrip.ttf');
 }
 @font-face {
    font-family: 'RoadMovie';
-   src: url('ROADMOVIE\ TRIAL___.ttf');
+   src: font-url('ROADMOVIE\ TRIAL___.ttf');
 }
 @font-face {
    font-family: 'Credits';
-   src: url('CreatorCreditsBB.ttf');
+   src: font-url('CreatorCreditsBB.ttf');
 }
 @font-face {
    font-family: 'anodina-light';
-   src: url('Anodina-Light.otf');
-} */
+   src: font-url('Anodina-Light.otf');
+}
 
-.BlockLetter {
+/* .BlockLetter {
   font-family: 'Arial';
 }
 
@@ -53,6 +53,9 @@
 .credits {
   font-family: 'Arial'
 }
+.arial {
+  font-family: 'Arial'
+} */
 .huge {
   font-size: 100px;
 }
@@ -125,7 +128,7 @@ body{
   color:white;
   background: black;
   background-image: url("https://i.pinimg.com/originals/d8/21/18/d82118622556ca08f26d20e45856029a.jpg");
-  /* font-family: 'anodina-light'; */
+  font-family: 'anodina-light';
 }
 
 .next_button {
