@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_04_165211) do
+ActiveRecord::Schema.define(version: 2021_02_04_165953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,12 +70,12 @@ ActiveRecord::Schema.define(version: 2021_02_04_165211) do
   create_table "tweets", force: :cascade do |t|
     t.string "tweet_id"
     t.string "text"
-    t.bigint "twitter_users_id", null: false
-    t.bigint "movies_id", null: false
+    t.bigint "twitter_user_id", null: false
+    t.bigint "movie_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["movies_id"], name: "index_tweets_on_movies_id"
-    t.index ["twitter_users_id"], name: "index_tweets_on_twitter_users_id"
+    t.index ["movie_id"], name: "index_tweets_on_movie_id"
+    t.index ["twitter_user_id"], name: "index_tweets_on_twitter_user_id"
   end
 
   create_table "twitter_users", force: :cascade do |t|
@@ -111,8 +111,8 @@ ActiveRecord::Schema.define(version: 2021_02_04_165211) do
   add_foreign_key "movie_actors", "movies"
   add_foreign_key "movie_directors", "directors"
   add_foreign_key "movie_directors", "movies"
-  add_foreign_key "tweets", "movies", column: "movies_id"
-  add_foreign_key "tweets", "twitter_users", column: "twitter_users_id"
+  add_foreign_key "tweets", "movies"
+  add_foreign_key "tweets", "twitter_users"
   add_foreign_key "user_movies", "movies"
   add_foreign_key "user_movies", "users"
 end

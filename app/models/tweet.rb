@@ -1,4 +1,4 @@
 class Tweet < ApplicationRecord
-  belongs_to :twitter_users
-  belongs_to :movies
+  belongs_to :twitter_user
+  belongs_to :movie
 end
