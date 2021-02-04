@@ -8,4 +8,5 @@ RSpec.describe Movie, type: :model do
   it {should have_many :user_movies}
   it {should have_many(:users).through(:user_movies)}
   it {should have_many :comments}
+  it {should have_many :tweets}
 end
