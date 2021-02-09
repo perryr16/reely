@@ -8,7 +8,7 @@ Results include which popular streaming sites (Netflix, HBO, Amazon...) have acc
 
 Users can create a profile where they can save movies to be watched. After watching users can remove the films from their saved profile. Users also have the ability to comment on films.
 
-When viewing movies
+When viewing movies tweets related to the specified movie title will be displayed.
 # Software Requirements
 * Ruby Version 2.5.3
 * Rails Version 6.03.3
