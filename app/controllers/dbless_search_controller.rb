@@ -1,9 +1,7 @@
 class DblessSearchController < ApplicationController
 
   def index
-    p '>>>>>>>>>>>>>>>>>> pre data dbless'
     @data = {movies: create_movie_list, search: params[:search], type: params[:search_type], query: params[:person_type]}
-    p '>>>>>>>>>>>>>>>>>> post data dbless'
   end
 
   private 

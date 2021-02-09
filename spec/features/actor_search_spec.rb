@@ -32,15 +32,5 @@ describe 'best results by actor' do
     expect(current_path).to eq("/dbless_search")
   end
 
-  it 'show dbless movie is functional' do 
-    visit '/dbless_search'
-    within('.movie-search') do 
-      select "Actor's"
-      select "Worst"
-      fill_in :search, with: "Brad Pitt"
-      click_button "Search"
-    end
-    expect(current_path).to eq("/dbless_search")
-    click_link "movie-2"
-  end
+
 end
