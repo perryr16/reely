@@ -22,13 +22,15 @@
 
         </div>
         <div class="">
-              <span><h2 class="movie_header"> <%= button_to movie[:title], movies_path(movie), method: :post, id: "movie-#{i}", class: "movie_link" %> (
+              <h2 class="movie-header"> <%= button_to movie[:title], movies_path(movie), method: :post, id: "movie-#{i}", class: "movie-link" %>
+              (
               <% if movie[:year]%>
               <%=movie[:year][0..3] %> 
               <% end %>
               <% if movie[:rated] %>
               <%=movie[:rated] %>)
-              <% end %></h2></span>
+              <% end %></h2>
+
             <p><%=movie[:genre] %></p>
             <table class="ratings">
               <tr>
@@ -66,7 +68,7 @@
             </div>
             <p class="ital"><%=movie[:description] %></p>
         </div>
-        <div class="">
+        <div class="trailer">
             <iframe width="550" height="300" src="https://www.youtube.com/embed/<%=movie[:trailer] %>" allowfullscreen="allowfulllscreen"></iframe>
         </div>
       </div>
