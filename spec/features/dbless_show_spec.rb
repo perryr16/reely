@@ -6,10 +6,14 @@ describe 'movie search by title' do
     within('.movie-search') do 
       select "Actor's"
       select "Worst"
-      fill_in :search, with: "Brad Pitt"
+      fill_in :search, with: "quentin tarantino"
       click_button "Search"
     end
     expect(current_path).to eq("/dbless_search")
-    click_link "movie-2"
+    find('#movie-2').click
+    movie = Movie.last
+    expect(current_path).to eq("/movies/#{movie.id}")
+    save_and_open_page
+
   end
 end

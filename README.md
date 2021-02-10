@@ -88,3 +88,10 @@ UserMovies
 Comments
 - belong to movies
 - belong to users
+
+Tweets 
+- belong to twitter users
+- belong to movies
+
+TwitterUsers 
+- have many tweets

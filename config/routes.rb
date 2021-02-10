@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :destroy]
 
   resources :movies do 
-    resources :streaming, only: [:index, :show]
+    resources :streaming, only: [:index, :show, :create]
   end
 
   get '/movies/:movie_id/comments', to: 'comments#new'
