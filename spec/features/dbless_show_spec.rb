@@ -13,7 +13,6 @@ describe 'movie search by title' do
     find('#movie-2').click
     movie = Movie.last
     expect(current_path).to eq("/movies/#{movie.id}")
-    save_and_open_page
 
   end
 end

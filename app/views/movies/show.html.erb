@@ -4,9 +4,17 @@
       <div class="grid-3">
         <div class="underline">
           <img class="poster" src="<%=@movie.poster %>" alt="movie poster">
-              <%= button_to user_movie_path(@movie.id), method: :delete, class: "transparent save-movie" do %>
+          <% if !current_user %>
+            <p class="small ital">You must login to save movies</p>
+          <% elsif current_user.movies.find{|movie| movie.id == @movie.id} %>  
+            <%= button_to user_movie_path(@movie.id), method: :delete, class: "transparent save-movie" do %>
               <i class="fa fa-trash fa-5x"></i>
             <% end %>
+          <% else %>
+            <%= button_to user_movies_path(@movie), method: :post, class: "transparent save-movie" do %>
+              <i class="fa fa-save fa-4x", aria-hidden="true"></i>
+            <% end %>
+          <% end %>
 
             
         </div>

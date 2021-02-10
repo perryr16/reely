@@ -197,14 +197,12 @@ body{
   color: teal;
 }
 .trailer {
-  margin-top: 55px;
+  margin-top: 60px;
 }
-.movie-header {
-  /* float: left; */
-}
+
 .inline {
   display: inline;
-  position: relative;3
+  position: relative;
   float: left;
 }
 .content {

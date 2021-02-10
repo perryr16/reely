@@ -13,6 +13,7 @@ class Movie < ApplicationRecord
   def director_list
     directors.map(&:name).uniq.join(', ')
   end
+  
   def actor_list 
     actors.map(&:name).uniq.join(', ')
   end
