@@ -4,6 +4,8 @@ class Tweet < ApplicationRecord
 
   def self.get_tweets_about(movie)
     tweet_data = TwitterService.new.get_tweets(movie.title + " movie")
+    return if tweet_data[:errors]
+    return if tweet_data[:meta][:result_count] == 0
     TwitterUser.create_twitter_users(tweet_data[:includes][:users])
     tweets = tweet_data[:data]
     Tweet.create_tweets(tweets, movie)

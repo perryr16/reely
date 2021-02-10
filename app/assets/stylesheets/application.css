@@ -183,12 +183,35 @@ body{
   position:fixed;
   z-index: +1
  }
+.movie-link {
+  border: none;
+  text-decoration: underline;
+  color: goldenrod;
+  background-color: transparent;
+  font-size: 30px;
+  font-weight: bold;
+  font-style: italic;
+  cursor: pointer;
+}
+.movie-link:hover {
+  color: teal;
+}
+.trailer {
+  margin-top: 60px;
+}
+
+.inline {
+  display: inline;
+  position: relative;
+  float: left;
+}
 .content {
   position:relative;
   top: 50px;
   /* overflow:hidden; */
   overflow: scroll;
   height: 90vh;
+  font-family: "arial"
 }
 .ital {
   font-style: italic;

@@ -78,7 +78,7 @@ class DblessResults
     end
   end
 
-    def rotten_rating(data)
+  def rotten_rating(data)
     if data[:Ratings]
       rotten = data[:Ratings].find do |hash|
         hash[:Source] == "Rotten Tomatoes"

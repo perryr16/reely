@@ -31,4 +31,6 @@ describe 'best results by actor' do
     end
     expect(current_path).to eq("/dbless_search")
   end
+
+
 end
