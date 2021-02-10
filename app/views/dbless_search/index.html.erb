@@ -21,7 +21,7 @@
             <% end %>
 
         </div>
-        <div class="">
+        <div>
               <h2 class="movie-header"> <%= button_to movie[:title], movies_path(movie), method: :post, id: "movie-#{i}", class: "movie-link" %>
               (
               <% if movie[:year]%>
