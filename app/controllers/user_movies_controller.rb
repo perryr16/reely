@@ -1,4 +1,5 @@
 class UserMoviesController < ApplicationController
+
   def create 
     movie = create_or_find_movie
     if !current_user
@@ -24,7 +25,9 @@ class UserMoviesController < ApplicationController
   private 
 
   def create_or_find_movie 
-    if !Movie.find_by(title: params[:title])
+    if params[:format]
+      movie = Movie.find(params[:format])
+    elsif !Movie.find_by(title: params[:title])
       movie = Movie.create(movie_params)
       movie.add_crew(params[:cast], params[:directors])
       movie
