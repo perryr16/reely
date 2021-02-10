@@ -22,21 +22,13 @@
 
         </div>
         <div class="">
-              <h2> <%= button_to movie[:title], movies_path(movie), method: :post, id: "movie-#{i}" %>(
+              <span><h2 class="movie_header"> <%= button_to movie[:title], movies_path(movie), method: :post, id: "movie-#{i}", class: "movie_link" %> (
               <% if movie[:year]%>
               <%=movie[:year][0..3] %> 
               <% end %>
               <% if movie[:rated] %>
               <%=movie[:rated] %>)
-              <% end %></h2>
-            
-            <h2><%=movie[:title] %> (
-              <% if movie[:year]%>
-              <%=movie[:year][0..3] %> 
-              <% end %>
-              <% if movie[:rated] %>
-              <%=movie[:rated] %>)
-              <% end %></h2>
+              <% end %></h2></span>
             <p><%=movie[:genre] %></p>
             <table class="ratings">
               <tr>

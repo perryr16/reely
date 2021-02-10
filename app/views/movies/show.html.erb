@@ -7,6 +7,8 @@
               <%= button_to user_movie_path(@movie.id), method: :delete, class: "transparent save-movie" do %>
               <i class="fa fa-trash fa-5x"></i>
             <% end %>
+
+            
         </div>
         <div class="underline">
             <h2><%=@movie.title%> (<%=@movie.year %> <%=@movie.rated %>)</h2>
