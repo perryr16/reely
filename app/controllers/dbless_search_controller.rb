@@ -4,10 +4,6 @@ class DblessSearchController < ApplicationController
     @data = {movies: create_movie_list, search: params[:search], type: params[:search_type], query: params[:person_type]}
   end
 
-  def show 
-    binding.pry
-  end
-
   private 
   
   def create_movie_list
