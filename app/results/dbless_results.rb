@@ -17,7 +17,7 @@ class DblessResults
 
   def worst_directed(director)
     worst = all_directed(director).sort_by {|m| m[:imdb].to_f}
-    filterd = worst.find_all {|movie| !movie[:imdb].nil?} 
+    filterd = worst.find_all {|movie| movie[:imdb].to_f > 0} 
   end
   
   def all_acted(actor)
@@ -33,7 +33,8 @@ class DblessResults
     all =  all_acted(actor)
     return if !all
     worst = all.sort_by {|m| m[:imdb].to_f}
-    filterd = worst.find_all {|movie| !movie[:imdb].nil?} 
+
+    filtered = worst.find_all {|movie| movie[:imdb].to_f > 0} 
   end
 
   def best_acted(actor)
