@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-xdescribe "results are formatted correctly" do 
-  it "returns data for fightclub" do 
+xdescribe "Streaming results are formatted correctly" do 
+  it "returns streaming data for fightclub" do 
     fight_club_id = "tt0137523"
     results = StreamingResults.new.streaming_data(fight_club_id)
     expect(results[0][:provider]).to be_truthy
