@@ -4,7 +4,7 @@ Reely is an app that allows users to quickly search for an actor or directors be
 
 Reely is a self-made app designed to make couch time more enjoyable in 2020. Searching for movies in the pandemic era has just gotten easier. Normal google searches, or lengthy movie blogs rarely have all the information you need in one place. Reely aggregates data from the Open Movie Database (OMDB) and The Movie Database (TMDB) API's to put the important information right in front of the user. A user can search for an actor or director's best films. Or if you want a good laugh, users can sort by their worst films. Films are ordered based on their IMDB rating. 
 
-Results include which popular streaming sites (Netflix, HBO, Amazon...) have access to the film. Unfortunately the free API only allows 20 API calls per month. 
+Results include which popular streaming sites (Netflix, HBO, Amazon...) have access to the film. Unfortunately the free API only allows 20 API calls per month and results are often unavailable.
 
 Users can create a profile where they can save movies to be watched. After watching users can remove the films from their saved profile. Users also have the ability to comment on films.
 
